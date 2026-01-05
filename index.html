@@ -37,8 +37,11 @@
     .features li{padding:.5rem 0;color:#4a5568;position:relative;padding-left:1.5rem}
     .features li:before{content:"✓";color:#10b981;position:absolute;left:0;font-weight:bold}
     .buy-button{width:100%;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:1.5rem}
-    .bundles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.5rem;margin-bottom:4rem}
-    .bundle-card{background:#f0f4ff;border:3px solid #667eea;border-radius:16px;padding:2.5rem;text-align:center}
+    .bundle{background:#f0f4ff;padding:4rem 0}
+    .bundle-card{background:#fff;border:3px solid #667eea;border-radius:16px;padding:3rem;text-align:center;max-width:800px;margin:0 auto}
+    .bundle-price{font-size:3.5rem;font-weight:800;color:#667eea;margin:1rem 0}
+    .bundle-value{font-size:1.8rem;color:#10b981;font-weight:600}
+    .bundle-features{margin:2rem 0}
     footer{background:#1a1a1a;color:#e2e8f0;padding:3rem 0;text-align:center}
   </style>
 </head>
@@ -49,7 +52,7 @@
         <div class="logo">ScriptAndScale AI</div>
         <ul class="nav-links">
           <li><a href="#agents">Agents</a></li>
-          <li><a href="#bundles">Bundles</a></li>
+          <li><a href="#bundle">Bundle</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <a href="#contact" class="cta-button">Get Started</a>
@@ -62,28 +65,28 @@
       <div class="container">
         <h1>Premium AI Agents That Run Your Business on Autopilot</h1>
         <p>Lifetime ownership. One-time payment. Fully customizable for any niche. No monthly fees. No coding required.</p>
-        <a href="#agents" class="cta-button">View All Agents & Bundles</a>
+        <a href="#agents" class="cta-button">View All Agents</a>
       </div>
     </section>
 
     <section class="agents" id="agents">
       <div class="container">
-        <h2 class="section-title">Individual AI Agents</h2>
+        <h2 class="section-title">Our AI Agents</h2>
         <div class="agents-grid">
           <div class="agent-card">
             <h3 class="agent-title">Social Content Generator</h3>
             <div class="agent-price">$9,997</div>
             <div class="value">Perceived Value: $12,997</div>
-            <p class="description">Automates daily fresh content for any niche — e.g., pool maintenance tips, real estate listings, fitness routines, or sci-fi stories. Keeps audiences engaged with variety and scheduling.</p>
+            <p class="description">Creates daily fresh content for any niche — e.g., fashion trends on Instagram, tech gadgets on X, or health recipes on TikTok. Drives engagement with variety and scheduling.</p>
             <div class="platforms">
               <img src="x-logo.png" alt="X">
               <img src="instagram-logo.png" alt="Instagram">
               <img src="tiktok-logo.png" alt="TikTok">
             </div>
             <ul class="features">
-              <li>4 posts per day, fresh themes</li>
-              <li>Integrates with Reply Bot for engagement</li>
-              <li>Perfect for creators, marketers, businesses</li>
+              <li>Daily unique posts</li>
+              <li>Random themes for freshness</li>
+              <li>Apps Script powered</li>
             </ul>
             <button class="buy-button" onclick="openPurchaseForm('Social Content Generator')">Buy Now</button>
           </div>
@@ -92,33 +95,64 @@
             <h3 class="agent-title">Reply Bot</h3>
             <div class="agent-price">$4,997</div>
             <div class="value">Perceived Value: $6,997</div>
-            <p class="description">Auto-replies to comments/mentions in your brand voice. Builds conversations, loyalty, and growth — e.g., respond to pool questions or real estate inquiries instantly.</p>
+            <p class="description">Auto-replies to comments in natural style — e.g., answer customer queries on e-commerce posts or engage fans on gaming content. Boosts loyalty across platforms.</p>
             <div class="platforms">
               <img src="x-logo.png" alt="X">
             </div>
             <ul class="features">
-              <li>Natural, positive responses</li>
-              <li>Add-on for any content agent</li>
-              <li>Rate-limit safe</li>
+              <li>Conversational responses</li>
+              <li>Rate-safe, duplicate-free</li>
+              <li>Add-on for any agent</li>
             </ul>
             <button class="buy-button" onclick="openPurchaseForm('Reply Bot')">Buy Now</button>
           </div>
 
-          <!-- Repeat similar cards for Promotion Bot, Custom Agent Builder, Chat Bot -->
+          <div class="agent-card">
+            <h3 class="agent-title">Promotion Bot</h3>
+            <div class="agent-price">$4,997</div>
+            <div class="value">Perceived Value: $5,997</div>
+            <p class="description">Drives traffic with subtle promos — e.g., tease product launches on X, affiliate offers on Instagram, or event invites on TikTok. High-conversion for resale.</p>
+            <div class="platforms">
+              <img src="x-logo.png" alt="X">
+              <img src="instagram-logo.png" alt="Instagram">
+              <img src="tiktok-logo.png" alt="TikTok">
+            </div>
+            <ul class="features">
+              <li>Scheduled promo posts</li>
+              <li>Subtle selling</li>
+              <li>Traffic to sites/products</li>
+            </ul>
+            <button class="buy-button" onclick="openPurchaseForm('Promotion Bot')">Buy Now</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Custom Agent Builder</h3>
+            <div class="agent-price">$4,997</div>
+            <div class="value">Perceived Value: $5,997</div>
+            <p class="description">Builds custom agents for unique needs — e.g., tailor a Reply Bot for e-commerce queries or a Promotion Bot for podcast episodes. Unlimited creation for clients.</p>
+            <div class="platforms">
+              <img src="x-logo.png" alt="X">
+            </div>
+            <ul class="features">
+              <li>Unlimited custom agents</li>
+              <li>Any niche/platform</li>
+              <li>Resale ready</li>
+            </ul>
+            <button class="buy-button" onclick="openPurchaseForm('Custom Agent Builder')">Buy Now</button>
+          </div>
 
           <div class="agent-card">
             <h3 class="agent-title">Video Content Automation Agent</h3>
             <div class="coming-soon">COMING SOON</div>
             <div class="agent-price">$14,997</div>
             <div class="value">Perceived Value: $19,997</div>
-            <p class="description">Pulls and posts single videos automatically — e.g., daily pool tips on YouTube or leak detection demos on Rumble.</p>
+            <p class="description">Pulls and posts single videos — e.g., recipe demos on YouTube, workout clips on Rumble, or fashion hauls on Vimeo. Automated for creators.</p>
             <div class="platforms">
               <img src="youtube-logo.png" alt="YouTube">
               <img src="vimeo-logo.png" alt="Vimeo">
               <img src="rumble-logo.png" alt="Rumble">
-              <img src="x-logo.png" alt="X">
             </div>
-            <button class="buy-button" onclick="openPurchaseForm('Video Content Automation Agent')">Notify Me / Buy</button>
+            <button class="buy-button" onclick="openPurchaseForm('Video Content Automation Agent')">Notify Me</button>
           </div>
 
           <div class="agent-card">
@@ -126,12 +160,28 @@
             <div class="coming-soon">COMING SOON</div>
             <div class="agent-price">$7,997</div>
             <div class="value">Perceived Value: $9,997</div>
-            <p class="description">Creates genre-based supercut videos from multiple clips — e.g., "Best 80s Toys Compilation" or "Top Pool Fails".</p>
+            <p class="description">Compiles supercut videos — e.g., "Best Gaming Moments" on YouTube or "Funny Pet Fails" on TikTok. Genre-based automation for viral content.</p>
             <div class="platforms">
               <img src="youtube-logo.png" alt="YouTube">
               <img src="tiktok-logo.png" alt="TikTok">
             </div>
-            <button class="buy-button" onclick="openPurchaseForm('Supercuts Agent')">Notify Me / Buy</button>
+            <button class="buy-button" onclick="openPurchaseForm('Supercuts Agent')">Notify Me</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Chat Bot</h3>
+            <div class="agent-price">$2,997</div>
+            <div class="value">Perceived Value: $4,997</div>
+            <p class="description">Embedded AI assistant for leads — e.g., answer product questions on e-commerce sites or guide users on blogs. Custom for any business.</p>
+            <div class="platforms">
+              <img src="x-logo.png" alt="X">
+            </div>
+            <ul class="features">
+              <li>Lead capture & support</li>
+              <li>Custom personality</li>
+              <li>Site embed ready</li>
+            </ul>
+            <button class="buy-button" onclick="openPurchaseForm('Chat Bot')">Buy Now</button>
           </div>
 
           <div class="agent-card">
@@ -139,18 +189,18 @@
             <div class="coming-soon">COMING SOON</div>
             <div class="agent-price">$9,997</div>
             <div class="value">Perceived Value: $12,997</div>
-            <p class="description">Turns ebooks/articles into scheduled posts with images — e.g., daily excerpts from your pool guide on LinkedIn.</p>
+            <p class="description">Turns written material into posts — e.g., blog excerpts on LinkedIn or book chapters on X. Adds images for visual appeal.</p>
             <div class="platforms">
               <img src="linkedin-logo.png" alt="LinkedIn">
               <img src="x-logo.png" alt="X">
             </div>
-            <button class="buy-button" onclick="openPurchaseForm('Written Content Agent')">Notify Me / Buy</button>
+            <button class="buy-button" onclick="openPurchaseForm('Written Content Agent')">Notify Me</button>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="bundles" id="bundles">
+    <section class="bundle" id="bundle">
       <div class="container">
         <h2 class="section-title">Bundles – Best Value</h2>
         <div class="bundles-grid">
@@ -188,10 +238,17 @@
       </div>
     </section>
 
-    <!-- Contact and footer as before -->
+    <!-- Contact, footer, form, overlay, script as before -->
+
   </main>
 
-  <!-- Purchase form, overlay, chat widget as before -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Purchase form and script as before -->
 
 </body>
 </html>
