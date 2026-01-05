@@ -1,68 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScriptAndScale AI - Premium AI Automation Agents</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: linear-gradient(to bottom, #f0f4f8, #d9e2ec); color: #333; }
-        header { background: linear-gradient(to right, #007bff, #0056b3); color: white; padding: 100px 20px; text-align: center; }
-        header h1 { font-size: 3.5em; margin: 0; font-weight: 700; }
-        header p { font-size: 1.5em; margin: 20px 0 0; opacity: 0.9; }
-        .container { max-width: 1000px; margin: auto; padding: 60px 20px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 15px; margin-top: -80px; }
-        h2 { text-align: center; font-size: 2.5em; margin-bottom: 40px; }
-        ul { max-width: 800px; margin: 40px auto; font-size: 1.3em; line-height: 1.8; }
-        li { margin-bottom: 20px; }
-        .bundle { background: linear-gradient(to bottom, #e9f7ef, #d4edda); padding: 50px; border-radius: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin: 60px auto; max-width: 800px; }
-        .price { font-size: 3em; color: #28a745; font-weight: 700; margin: 20px 0; }
-        .buy-button { background: #28a745; color: white; padding: 25px 50px; font-size: 1.8em; text-decoration: none; border-radius: 50px; display: inline-block; margin: 40px 0; box-shadow: 0 8px 25px rgba(40,167,69,0.4); transition: 0.3s; font-weight: 600; }
-        .buy-button:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(40,167,69,0.6); }
-        .trust { text-align: center; margin: 60px 0; font-size: 1.2em; color: #666; }
-        footer { text-align: center; padding: 40px; font-size: 1em; background: #333; color: white; margin-top: 80px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ScriptAndScale AI - Premium AI Automation Agents</title>
+  <meta name="description" content="Lifetime AI agents that replace teams. One-time purchase. Fully customizable for any niche."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;line-height:1.6;color:#1a1a1a;background:#fff}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    header{background:#fff;position:fixed;top:0;width:100%;z-index:1000;border-bottom:1px solid #e5e5e5;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
+    .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .nav-links{display:flex;list-style:none;gap:2.5rem}
+    .nav-links a{text-decoration:none;color:#4a5568;font-weight:500;transition:color .3s}
+    .nav-links a:hover{color:#667eea}
+    .cta-button{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:.8rem 1.8rem;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:transform .2s}
+    .cta-button:hover{transform:translateY(-3px)}
+    main{margin-top:90px}
+    .hero{padding:5rem 0;text-align:center;background:linear-gradient(135deg,#f8fafc,#e0e7ff)}
+    .hero h1{font-size:3.8rem;font-weight:800;margin-bottom:1.5rem}
+    .hero p{font-size:1.3rem;color:#4a5568;max-width:800px;margin:0 auto 2rem}
+    .section-title{text-align:center;font-size:2.8rem;font-weight:700;margin:4rem 0 3rem}
+    .agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.5rem;margin-bottom:4rem}
+    .agent-card{background:#fff;border:1px solid #e5e5e5;border-radius:16px;padding:2.5rem;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.05)}
+    .agent-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,.1)}
+    .agent-title{font-size:1.6rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a}
+    .agent-price{font-size:2.2rem;font-weight:800;color:#667eea;margin:1.5rem 0}
+    .value{font-size:1.1rem;color:#10b981;font-weight:600}
+    .coming-soon{background:#fff3cd;color:#92400e;padding:.5rem 1rem;border-radius:6px;display:inline-block;margin:1rem 0;font-weight:600}
+    .features{list-style:none;margin:1.5rem 0}
+    .features li{padding:.5rem 0;color:#4a5568;position:relative;padding-left:1.5rem}
+    .features li:before{content:"✓";color:#10b981;position:absolute;left:0;font-weight:bold}
+    .buy-button{width:100%;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:1.5rem}
+    .bundle{background:#f0f4ff;padding:4rem 0}
+    .bundle-card{background:#fff;border:3px solid #667eea;border-radius:16px;padding:3rem;text-align:center;max-width:800px;margin:0 auto}
+    .bundle-price{font-size:3.5rem;font-weight:800;color:#667eea;margin:1rem 0}
+    .bundle-value{font-size:1.8rem;color:#10b981;font-weight:600}
+    .bundle-features{margin:2rem 0}
+    footer{background:#1a1a1a;color:#e2e8f0;padding:3rem 0;text-align:center}
+    .chat-widget{position:fixed;bottom:20px;right:20px;background:#667eea;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:1000}
+  </style>
 </head>
 <body>
-    <header>
-        <h1>ScriptAndScale AI</h1>
-        <p>Premium Automated AI Agents for Hands-Off Income</p>
-    </header>
-    
+  <header>
     <div class="container">
-        <p style="text-align:center;font-size:1.4em;max-width:800px;margin:0 auto 50px;">Transform your social media into a fully automated revenue system. Our agents handle content creation, posting, and engagement 24/7—with minimal maintenance.</p>
-        
-        <h2>Powerful AI Agents Included</h2>
-        <ul>
-            <li><strong>Social Content Generator</strong> – Automated themed posts for X/Twitter and other platforms</li>
-            <li><strong>Video Content Automation Agent</strong> – Scrape, edit, and post short-form videos across platforms</li>
-            <li><strong>Reply Bot</strong> – Intelligent auto-responses to boost engagement and growth</li>
-            <li><strong>Video Distribution Agent</strong> – Generate and distribute short-form videos with AI tools</li>
-            <li><strong>Meme Generator</strong> – Quick viral meme creation and posting</li>
-            <li>Plus: Full integration, custom expansions, and ongoing optimizations</li>
+      <nav>
+        <div class="logo">ScriptAndScale AI</div>
+        <ul class="nav-links">
+          <li><a href="#agents">Agents</a></li>
+          <li><a href="#bundle">Bundle</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-        
-        <div class="bundle">
-            <h2>Exclusive Flagship Bundle</h2>
-            <p class="price">$44,997 (Total Value: $58,988)</p>
-            <p style="font-size:1.4em;">Complete catalog with custom setup included. Projected: $5,000–$10,000/month passive income once scaled.</p>
-            <p style="font-size:1.2em;margin:30px 0;">Individual agents starting at $97–$497.</p>
-            <p style="font-size:1.1em;color:#555;">100% satisfaction guarantee – full support until you're live and scaling.</p>
-        </div>
-        
-        <div class="trust">
-            <p><strong>Trusted by creators building real passive revenue streams.</strong><br>
-            (Testimonials coming soon – early access clients seeing massive engagement gains)</p>
-        </div>
-        
-        <div style="text-align:center;">
-            <a href="mailto:scriptandscaleai@gmail.com?subject=ScriptAndScale AI Inquiry" class="buy-button">Secure Your Access – Limited Spots</a>
-        </div>
-        
-        <p style="text-align:center;margin-top:50px;font-size:1.2em;">Ready to automate your income? Contact today for a demo or custom quote.</p>
+        <a href="#contact" class="cta-button">Get Started</a>
+      </nav>
     </div>
-    
-    <footer>
-        © 2026 ScriptAndScale AI | Premium Automation Tools for Serious Entrepreneurs
-    </footer>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Premium AI Agents That Run Your Business on Autopilot</h1>
+        <p>Lifetime ownership. One-time payment. Fully customizable for any niche. No monthly fees. No coding required.</p>
+        <a href="#agents" class="cta-button">View All Agents</a>
+      </div>
+    </section>
+
+    <section class="agents" id="agents">
+      <div class="container">
+        <h2 class="section-title">Our AI Agents</h2>
+        <div class="agents-grid">
+          <div class="agent-card">
+            <h3 class="agent-title">Social Content Generator</h3>
+            <div class="agent-price">$9,997</div>
+            <div class="value">Perceived Value: $12,997</div>
+            <ul class="features">
+              <li>Daily automated content in any genre</li>
+              <li>Fresh, unique posts with variety control</li>
+              <li>Apps Script – runs on Google account</li>
+              <li>Fully customizable via Agent Builder</li>
+            </ul>
+            <button class="buy-button" onclick="alert('Contact scriptandscaleai@gmail.com to purchase')">Buy Now</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Reply Bot</h3>
+            <div class="agent-price">$4,997</div>
+            <div class="value">Perceived Value: $6,997</div>
+            <ul class="features">
+              <li>Auto-replies to all engagement</li>
+              <li>Natural, on-brand responses</li>
+              <li>Rate-limit safe, duplicate-free</li>
+              <li>Works on X (Twitter) and expandable</li>
+            </ul>
+            <button class="buy-button" onclick="alert('Contact scriptandscaleai@gmail.com to purchase')">Buy Now</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Promotion Bot</h3>
+            <div class="agent-price">$4,997</div>
+            <div class="value">Perceived Value: $5,997</div>
+            <ul class="features">
+              <li>Drives traffic to your site/products</li>
+              <li>Subtle, high-converting promotion posts</li>
+              <li>Scheduled or triggered</li>
+              <li>High-end resale ready</li>
+            </ul>
+            <button class="buy-button" onclick="alert('Contact scriptandscaleai@gmail.com to purchase')">Buy Now</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Custom Agent Builder</h3>
+            <div class="agent-price">$4,997</div>
+            <div class="value">Included in Promotion Bot package</div>
+            <ul class="features">
+              <li>Create unlimited custom agents</li>
+              <li>Any niche, any platform</li>
+              <li>Full client resale capability</li>
+            </ul>
+            <button class="buy-button" onclick="alert('Contact scriptandscaleai@gmail.com to purchase')">Buy Now</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Video Content Automation Agent</h3>
+            <div class="agent-price">$14,997</div>
+            <div class="value">Perceived Value: $19,997</div>
+            <ul class="features">
+              <li>Pulls and posts single videos automatically</li>
+              <li>Any genre or source</li>
+              <li>YouTube, TikTok, etc. ready</li>
+            </ul>
+            <button class="buy-button" onclick="alert('Contact scriptandscaleai@gmail.com to purchase')">Buy Now</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Supercuts Agent</h3>
+            <div class="agent-price">$7,997</div>
+            <div class="value">Perceived Value: $9,997</div>
+            <ul class="features">
+              <li>Creates genre-based supercut videos</li>
+              <li>Pulls multiple clips, edits, posts</li>
+              <li>Fully automated daily output</li>
+            </ul>
+            <button class="buy-button" onclick="alert('Contact scriptandscaleai@gmail.com to purchase')">Buy Now</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Chat Bot</h3>
+            <div class="agent-price">$2,997</div>
+            <ul class="features">
+              <li>Website-embedded AI assistant</li>
+              <li>Lead capture, support, sales</li>
+              <li>Custom personality/training</li>
+            </ul>
+            <button class="buy-button" onclick="alert('Contact scriptandscaleai@gmail.com to purchase')">Buy Now</button>
+          </div>
+
+          <div class="agent-card">
+            <h3 class="agent-title">Written Content Agent</h3>
+            <div class="coming-soon">COMING SOON</div>
+            <div class="agent-price">$9,997 (planned)</div>
+            <ul class="features">
+              <li>Turns ebooks/articles into scheduled posts</li>
+              <li>Auto-generates relevant images</li>
+              <li>Any written source → social content</li>
+            </ul>
+            <button class="buy-button" disabled>Notify Me</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bundle" id="bundle">
+      <div class="container">
+        <h2 class="section-title">Flagship Bundle – Everything Included</h2>
+        <div class="bundle-card">
+          <h3>All Current & Future Agents</h3>
+          <div class="bundle-price">$44,997</div>
+          <div class="bundle-value">Perceived Value: $58,988</div>
+          <p class="bundle-features">Lifetime access to every agent we release. One-time payment. Full ownership.</p>
+          <button class="buy-button" style="font-size:1.4rem;padding:1.2rem" onclick="alert('Contact scriptandscaleai@gmail.com for bundle purchase')">Purchase Full Bundle</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Ready to Scale?</h2>
+        <p style="text-align:center;max-width:700px;margin:0 auto 2rem;font-size:1.2rem;color:#4a5568">
+          All purchases via direct contact. Email us to discuss your needs and get started today.
+        </p>
+        <p style="text-align:center;font-size:2rem;font-weight:700;margin:2rem 0">
+          <a href="mailto:scriptandscaleai@gmail.com" style="color:#667eea;text-decoration:none">scriptandscaleai@gmail.com</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="chat-widget" onclick="alert('Chat Bot coming soon — contact for early access')">
+    💬
+  </div>
 </body>
 </html>
