@@ -43,15 +43,14 @@
       <nav>
         <div class="logo">ScriptAndScale AI</div>
         <ul class="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#agents">All Agents</a></li>
-          <li><a href="/#bundle">Bundles</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#agents">All Agents</a></li>
+          <li><a href="index.html#bundles">Bundles</a></li>
+          <li><a href="index.html#purchase">Purchase</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
   <main>
     <section class="agent-detail">
       <div class="container">
@@ -96,13 +95,11 @@
       </div>
     </section>
   </main>
-
   <footer>
     <div class="container">
       <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
     </div>
   </footer>
-
   <script>
     function submitNotify(agent) {
       const name = document.getElementById('notify-name').value;
@@ -112,6 +109,7 @@
         return;
       }
       alert('Thanks! We'll notify you when ' + agent + ' launches.');
+      // In future: connect to backend for real notification
     }
   </script>
 </body>
