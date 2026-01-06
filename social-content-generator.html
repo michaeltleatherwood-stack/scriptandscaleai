@@ -27,7 +27,7 @@
     .features{max-width:700px;margin:3rem auto;text-align:left;background:#f8fafc;padding:2rem;border-radius:16px}
     .features li{font-size:1.2rem;padding:.75rem 0;position:relative;padding-left:2rem}
     .features li:before{content:"✓";color:#10b981;position:absolute;left:0;font-weight:bold;font-size:1.5rem}
-    .buy-button{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1.2rem 3rem;border:none;border-radius:12px;font-size:1.4rem;font-weight:600;cursor:pointer;margin:3rem 0;transition:transform .2s}
+    .buy-button{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1.2rem 3rem;border:none;border-radius:12px;font-size:1.4rem;font-weight:600;cursor:pointer;margin:3rem 0;transition:transform .2s;display:inline-block}
     .buy-button:hover{transform:translateY(-5px)}
     footer{background:#1a1a1a;color:#e2e8f0;padding:3rem 0;text-align:center}
   </style>
@@ -38,15 +38,14 @@
       <nav>
         <div class="logo">ScriptAndScale AI</div>
         <ul class="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#agents">All Agents</a></li>
-          <li><a href="/#bundle">Bundles</a></li>
-          <li><a href="/#contact">Contact</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#agents">All Agents</a></li>
+          <li><a href="index.html#bundles">Bundles</a></li>
+          <li><a href="index.html#purchase">Purchase</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
   <main>
     <section class="agent-detail">
       <div class="container">
@@ -74,19 +73,14 @@
           <li>Easy customization for any brand or niche</li>
           <li>Perfect foundation for full social automation</li>
         </ul>
-        <button class="buy-button" onclick="openPurchaseForm('Social Content Generator')">Buy Now - $9,997</button>
+        <a href="index.html#purchase" class="buy-button">Buy Now - $9,997</a>
       </div>
     </section>
   </main>
-
   <footer>
     <div class="container">
       <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
     </div>
   </footer>
-
-  <!-- Same purchase form, overlay, and script as home page -->
-  <!-- Copy from your current index.html form section -->
-
 </body>
 </html>
