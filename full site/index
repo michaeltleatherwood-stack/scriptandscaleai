@@ -48,22 +48,20 @@
         <ul class="nav-links">
           <li><a href="#agents">Agents</a></li>
           <li><a href="#bundles">Bundles</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#purchase">Purchase</a></li>
         </ul>
-        <a href="#contact" class="cta-button">Get Started</a>
+        <a href="#purchase" class="cta-button">Get Started</a>
       </nav>
     </div>
   </header>
-
   <main>
     <section class="hero">
       <div class="container">
         <h1>Premium AI Agents That Run Your Business on Autopilot</h1>
         <p>Lifetime ownership. One-time payment. Fully customizable for any niche. No monthly fees. No coding required.</p>
-        <a href="#agents" class="cta-button">View All Agents & Bundles</a>
+        <a href="#purchase" class="cta-button">Purchase Now</a>
       </div>
     </section>
-
     <section class="agents" id="agents">
       <div class="container">
         <h2 class="section-title">Our AI Agents</h2>
@@ -78,9 +76,8 @@
               <img src="instagram-logo.png" alt="Instagram">
               <img src="tiktok-logo.png" alt="TikTok">
             </div>
-            <a href="social-content-generator.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Now</a>
           </div>
-
           <div class="agent-card">
             <h3 class="agent-title">Reply Bot</h3>
             <div class="agent-price">$4,997</div>
@@ -89,9 +86,8 @@
             <div class="platforms">
               <img src="x-logo.png" alt="X">
             </div>
-            <a href="reply-bot.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Now</a>
           </div>
-
           <div class="agent-card">
             <h3 class="agent-title">Promotion Bot</h3>
             <div class="agent-price">$4,997</div>
@@ -102,9 +98,8 @@
               <img src="instagram-logo.png" alt="Instagram">
               <img src="tiktok-logo.png" alt="TikTok">
             </div>
-            <a href="promotion-bot.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Now</a>
           </div>
-
           <div class="agent-card">
             <h3 class="agent-title">Custom Agent Builder</h3>
             <div class="agent-price">$4,997</div>
@@ -113,9 +108,8 @@
             <div class="platforms">
               <img src="x-logo.png" alt="X">
             </div>
-            <a href="custom-agent-builder.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Now</a>
           </div>
-
           <div class="agent-card">
             <h3 class="agent-title">Video Content Automation Agent</h3>
             <div class="coming-soon">COMING SOON</div>
@@ -127,9 +121,8 @@
               <img src="vimeo-logo.png" alt="Vimeo">
               <img src="rumble-logo.png" alt="Rumble">
             </div>
-            <a href="video-content-automation-agent.html" class="learn-more-button">Notify Me</a>
+            <a href="#purchase" class="learn-more-button">Notify Me</a>
           </div>
-
           <div class="agent-card">
             <h3 class="agent-title">Supercuts Agent</h3>
             <div class="coming-soon">COMING SOON</div>
@@ -140,9 +133,8 @@
               <img src="youtube-logo.png" alt="YouTube">
               <img src="tiktok-logo.png" alt="TikTok">
             </div>
-            <a href="supercuts-agent.html" class="learn-more-button">Notify Me</a>
+            <a href="#purchase" class="learn-more-button">Notify Me</a>
           </div>
-
           <div class="agent-card">
             <h3 class="agent-title">Chat Bot</h3>
             <div class="agent-price">$2,997</div>
@@ -151,9 +143,8 @@
             <div class="platforms">
               <img src="x-logo.png" alt="X">
             </div>
-            <a href="chat-bot.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Now</a>
           </div>
-
           <div class="agent-card">
             <h3 class="agent-title">Written Content Agent</h3>
             <div class="coming-soon">COMING SOON</div>
@@ -164,13 +155,12 @@
               <img src="linkedin-logo.png" alt="LinkedIn">
               <img src="x-logo.png" alt="X">
             </div>
-            <a href="written-content-agent.html" class="learn-more-button">Notify Me</a>
+            <a href="#purchase" class="learn-more-button">Notify Me</a>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="bundle" id="bundle">
+    <section class="bundle" id="bundles">
       <div class="container">
         <h2 class="section-title">Bundles – Best Value</h2>
         <div class="bundles-grid">
@@ -179,36 +169,92 @@
             <div class="bundle-price">$19,997</div>
             <div class="bundle-value">Save $10,000+</div>
             <p>Social Content Generator + Reply Bot + Promotion Bot + Chat Bot</p>
-            <a href="content-creator-bundle.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Bundle</a>
           </div>
-
           <div class="bundle-card">
             <h3>Video Creator Bundle</h3>
             <div class="bundle-price">$24,997</div>
             <div class="bundle-value">Save $15,000+</div>
             <p>Video Content Automation + Supercuts + Promotion Bot + Chat Bot</p>
-            <a href="video-creator-bundle.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Bundle</a>
           </div>
-
           <div class="bundle-card">
             <h3>Engagement Boost Add-On</h3>
             <div class="bundle-price">$6,997</div>
             <p>Reply Bot + Chat Bot</p>
-            <a href="engagement-boost.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Bundle</a>
           </div>
-
           <div class="bundle-card">
             <h3>Flagship Everything Bundle</h3>
             <div class="bundle-price">$44,997</div>
             <div class="bundle-value">Perceived Value: $58,988</div>
             <p>All current + future agents. Lifetime.</p>
-            <a href="flagship-bundle.html" class="learn-more-button">Learn More & Buy</a>
+            <a href="#purchase" class="learn-more-button">Buy Bundle</a>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Contact, footer as before -->
+    <section class="purchase-form" id="purchase">
+      <div class="container">
+        <h2 class="section-title">Purchase Your AI Agent</h2>
+        <p style="text-align:center;max-width:800px;margin:0 auto 2rem;color:#4a5568">
+          Select your agent or bundle below. No payment required now — you'll receive your custom agent package within 24 hours after review.
+        </p>
+        
+        <form action="https://script.google.com/macros/s/AKfycbwtALs1wdsehEDOODAASBbv6ZPpltvOApPYx8YQIrDpRrABrco2mQIBJoXoLBUfb2Y/exec" method="post" style="max-width:600px;margin:0 auto;background:#f8fafc;padding:3rem;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1)">
+          <div style="margin-bottom:1.5rem">
+            <label style="display:block;margin-bottom:.5rem;font-weight:600">Your Name</label>
+            <input type="text" name="name" required style="width:100%;padding:1rem;border:1px solid #e5e5e5;border-radius:8px;font-size:1rem"/>
+          </div>
+          
+          <div style="margin-bottom:1.5rem">
+            <label style="display:block;margin-bottom:.5rem;font-weight:600">Email</label>
+            <input type="email" name="email" required style="width:100%;padding:1rem;border:1px solid #e5e5e5;border-radius:8px;font-size:1rem"/>
+          </div>
+          
+          <div style="margin-bottom:1.5rem">
+            <label style="display:block;margin-bottom:.5rem;font-weight:600">Select Agent or Bundle</label>
+            <select name="agent" required style="width:100%;padding:1rem;border:1px solid #e5e5e5;border-radius:8px;font-size:1rem">
+              <option value="" disabled selected>Choose your agent or bundle...</option>
+              <optgroup label="Individual Agents">
+                <option value="REPLY_BOT">Reply Bot Agent - $2,997</option>
+                <option value="CHANNEL_OPTIMIZATION">Channel Optimization Agent - $4,997</option>
+                <option value="PROMOTION_BOT">Promotion Bot - $3,997</option>
+                <option value="VIDEO_AUTOMATION">Video Automation Agent - $6,997</option>
+                <option value="SUPERCUTS">Supercuts Agent - $8,997</option>
+                <option value="WRITTEN_CONTENT">Written Content Agent - $5,997</option>
+                <option value="CHAT_BOT">Chat Bot Agent - $3,997</option>
+                <option value="CUSTOM">Custom Agent Build - $19,997</option>
+              </optgroup>
+              <optgroup label="Bundles">
+                <option value="CONTENT_CREATOR_BUNDLE">Content Creator Bundle - $19,997</option>
+                <option value="VIDEO_CREATOR_BUNDLE">Video Creator Bundle - $24,997</option>
+                <option value="ENGAGEMENT_BOOST">Engagement Boost Add-On - $6,997</option>
+                <option value="FLAGSHIP">Flagship Everything Bundle - $44,997</option>
+              </optgroup>
+            </select>
+          </div>
+          
+          <div style="margin-bottom:1.5rem">
+            <label style="display:block;margin-bottom:.5rem;font-weight:600">Notes (optional - mention discount requests here)</label>
+            <textarea name="notes" rows="4" style="width:100%;padding:1rem;border:1px solid #e5e5e5;border-radius:8px;font-size:1rem;resize:vertical"></textarea>
+          </div>
+          
+          <button type="submit" style="width:100%;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1.2rem;border:none;border-radius:8px;font-size:1.2rem;font-weight:600;cursor:pointer">
+            Submit Order
+          </button>
+          
+          <p style="text-align:center;margin-top:1.5rem;font-size:.9rem;color:#666">
+            No payment required now. Your order will be reviewed and your agent package delivered within 24 hours.
+          </p>
+        </form>
+      </div>
+    </section>
   </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
