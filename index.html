@@ -67,7 +67,7 @@
       <div class="card">
         <img src="https://via.placeholder.com/400x200/667eea/fff?text=Social+Content+Generator" alt="Social Content Generator">
         <h3>Social Content Generator</h3>
-        <p>Daily fresh, on-brand posts. Live test on @ctrlaltrewind.</p>
+        <p>Daily fresh, on-brand posts automated across platforms.</p>
         <p class="price">$9,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='social-content-generator.html'">Learn More</button>
@@ -83,11 +83,10 @@
       <div class="card">
         <img src="https://via.placeholder.com/400x200/667eea/fff?text=Reply+Bot" alt="Reply Bot">
         <h3>Reply Bot</h3>
-        <p>Gen X voice, catches replies + mentions. Live.</p>
+        <p>Intelligent automated replies and engagement.</p>
         <p class="price">$4,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='reply-bot.html'">Learn More</button>
-          <button class="btn-buy" onclick="scrollToDetails('Reply Bot - $4,997')">Buy Now</button>
         </div>
         <div class="social-logos">
           <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
@@ -103,7 +102,6 @@
         <p class="price">$4,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='promotion-bot.html'">Learn More</button>
-          <button class="btn-buy" onclick="scrollToDetails('Promotion Bot - $4,997')">Buy Now</button>
         </div>
         <div class="social-logos">
           <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
@@ -119,7 +117,6 @@
         <p class="price">$4,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='custom-agent-builder.html'">Learn More</button>
-          <button class="btn-buy" onclick="scrollToDetails('Custom Agent Builder - $4,997')">Buy Now</button>
         </div>
         <div class="social-logos">
           <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
@@ -179,7 +176,7 @@
       <div class="card">
         <img src="https://via.placeholder.com/400x200/667eea/fff?text=Chat+Bot" alt="Chat Bot">
         <h3>Chat Bot</h3>
-        <p>Live site chat automation.</p>
+        <p>Live site and platform chat automation.</p>
         <p class="price">$2,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='chat-bot.html'">Learn More</button>
@@ -218,7 +215,7 @@
         <p>Includes: Social Content Generator, Reply Bot, Promotion Bot, Chat Bot</p>
         <p class="price">$19,997</p>
         <div class="buttons">
-          <button class="btn-buy" onclick="scrollToDetails('Content Creator Bundle - $19,997')">Buy Now</button>
+          <!-- No Buy Now -->
         </div>
       </div>
       <div class="card">
@@ -226,7 +223,7 @@
         <p>Includes: Video Content Automation, Supercuts Agent, Promotion Bot, Chat Bot</p>
         <p class="price">$24,997</p>
         <div class="buttons">
-          <button class="btn-buy" onclick="scrollToDetails('Video Creator Bundle - $24,997')">Buy Now</button>
+          <!-- No Buy Now -->
         </div>
       </div>
       <div class="card">
@@ -234,7 +231,7 @@
         <p>Includes: Reply Bot, Chat Bot</p>
         <p class="price">$6,997</p>
         <div class="buttons">
-          <button class="btn-buy" onclick="scrollToDetails('Engagement Boost Add-On - $6,997')">Buy Now</button>
+          <!-- No Buy Now -->
         </div>
       </div>
       <div class="card">
@@ -242,7 +239,7 @@
         <p>All current + future agents. Lifetime.</p>
         <p class="price">$44,997</p>
         <div class="buttons">
-          <button class="btn-buy" onclick="scrollToDetails('Flagship Everything Bundle - $44,997')">Buy Now</button>
+          <!-- No Buy Now -->
         </div>
       </div>
     </div>
@@ -256,14 +253,7 @@
         <select id="productSelect" required>
           <option value="">Select Product</option>
           <option>Social Content Generator - $9,997</option>
-          <option>Reply Bot - $4,997</option>
-          <option>Promotion Bot - $4,997</option>
-          <option>Custom Agent Builder - $4,997</option>
           <option>Chat Bot - $2,997</option>
-          <option>Content Creator Bundle - $19,997</option>
-          <option>Video Creator Bundle - $24,997</option>
-          <option>Engagement Boost Add-On - $6,997</option>
-          <option>Flagship Everything Bundle - $44,997</option>
         </select>
         <input type="text" placeholder="Full Name" required>
         <input type="email" placeholder="Email Address" required>
@@ -296,10 +286,9 @@
       document.getElementById('productSelect').value = product;
       document.getElementById('details').scrollIntoView({behavior: 'smooth'});
     }
-    // Placeholder for form submit - replace with your Apps Script web app URL
+    // Placeholder for form submit - replace with your Apps Script web app URL later
     document.getElementById('purchaseForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      // Here post to Apps Script for complexity check / PayPal redirect
       document.getElementById('successMsg').style.display = 'block';
     });
   </script>
