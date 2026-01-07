@@ -1,305 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScriptAndScale AI - Premium AI Automation Agents</title>
-  <meta name="description" content="Lifetime AI agents that replace teams. One-time purchase. Fully customizable for any niche."/>
+  <!-- Your existing head content, fonts, etc. -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* Paste your full existing CSS here - unchanged */
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;line-height:1.6;color:#1a1a1a;background:#fff}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    header{background:#fff;position:fixed;top:0;width:100%;z-index:1000;border-bottom:1px solid #e5e5e5;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-    nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
-    .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .nav-links{display:flex;list-style:none;gap:2.5rem}
-    .nav-links a{text-decoration:none;color:#4a5568;font-weight:500;transition:color .3s}
-    .nav-links a:hover{color:#667eea}
-    .cta-button{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:.8rem 1.8rem;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:transform .2s}
-    .cta-button:hover{transform:translateY(-3px)}
-    main{margin-top:90px}
-    .hero{padding:5rem 0;text-align:center;background:linear-gradient(135deg,#f8fafc,#e0e7ff)}
-    .hero h1{font-size:3.8rem;font-weight:800;margin-bottom:1.5rem}
-    .hero p{font-size:1.3rem;color:#4a5568;max-width:800px;margin:0 auto 2rem}
-    .section-title{text-align:center;font-size:2.8rem;font-weight:700;margin:4rem 0 3rem}
-    .agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.5rem;margin-bottom:4rem}
-    .agent-card{background:#fff;border:1px solid #e5e5e5;border-radius:16px;padding:2.5rem;transition:all .3s;box-shadow:0 4px 20px rgba(0,0,0,.05);text-align:center}
-    .agent-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,.1)}
-    .agent-title{font-size:1.6rem;font-weight:700;margin-bottom:1rem;color:#1a1a1a}
-    .agent-price{font-size:2.2rem;font-weight:800;color:#667eea;margin:1.5rem 0}
-    .value{font-size:1.1rem;color:#10b981;font-weight:600}
-    .coming-soon{background:#fff3cd;color:#92400e;padding:.5rem 1rem;border-radius:6px;display:inline-block;margin:1rem 0;font-weight:600}
-    .description{margin:1rem 0;color:#4a5568}
-    .platforms{margin:1.5rem 0;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-    .platforms img{height:40px}
-    .learn-more-button{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:1rem;width:100%}
-    .notify-button{background:#6b7280;color:#fff;padding:1rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:1rem;width:100%}
-    .bundle{background:#f0f4ff;padding:4rem 0}
-    .bundles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:2.5rem}
-    .bundle-card{background:#fff;border:3px solid #667eea;border-radius:16px;padding:3rem;text-align:center}
-    .purchase-form{background:#f8fafc;padding:4rem 0}
-    .success-message{background:#d4edda;color:#155724;padding:1.5rem;border-radius:8px;margin:2rem auto;max-width:600px;text-align:center;display:none}
-    footer{background:#1a1a1a;color:#e2e8f0;padding:3rem 0;text-align:center}
+    body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0f0f23,#1a1a3e);color:#fff;min-height:100vh}
+    /* ... all your current styles ... */
   </style>
-  <script>
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
-      
-      fetch(form.action, {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'success') {
-          document.getElementById('purchase-form').style.display = 'none';
-          document.getElementById('success-message').style.display = 'block';
-          document.getElementById('success-text').innerText = data.message;
-        } else {
-          alert('Error: ' + data.message);
-        }
-      })
-      .catch(() => {
-        alert('Network error — please try again.');
-      });
-    }
-  </script>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo">ScriptAndScale AI</div>
-        <ul class="nav-links">
-          <li><a href="#agents">Agents</a></li>
-          <li><a href="#bundles">Bundles</a></li>
-          <li><a href="#purchase">Purchase</a></li>
-        </ul>
-        <a href="#purchase" class="cta-button">Get Started</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Premium AI Agents That Run Your Business on Autopilot</h1>
-        <p>Lifetime ownership. One-time payment. Fully customizable for any niche. No monthly fees. No coding required.</p>
-        <a href="#purchase" class="cta-button">Purchase Now</a>
-      </div>
-    </section>
-    <section class="agents" id="agents">
-      <div class="container">
-        <h2 class="section-title">Our AI Agents</h2>
-        <div class="agents-grid">
-          <!-- Available Agents -->
-          <div class="agent-card">
-            <h3 class="agent-title">Social Content Generator</h3>
-            <div class="agent-price">$9,997</div>
-            <div class="value">Perceived Value: $12,997</div>
-            <p class="description">Automates daily fresh content for any niche.</p>
-            <div class="platforms">
-              <img src="x-logo.png" alt="X">
-              <img src="instagram-logo.png" alt="Instagram">
-              <img src="tiktok-logo.png" alt="TikTok">
-            </div>
-            <a href="social-content-generator.html" class="learn-more-button">Learn More</a>
-            <a href="#purchase" class="learn-more-button" style="margin-top:.5rem">Buy Now</a>
-          </div>
-          <div class="agent-card">
-            <h3 class="agent-title">Reply Bot</h3>
-            <div class="agent-price">$4,997</div>
-            <div class="value">Perceived Value: $6,997</div>
-            <p class="description">Auto-replies to comments in natural style.</p>
-            <div class="platforms">
-              <img src="x-logo.png" alt="X">
-            </div>
-            <a href="reply-bot.html" class="learn-more-button">Learn More</a>
-            <a href="#purchase" class="learn-more-button" style="margin-top:.5rem">Buy Now</a>
-          </div>
-          <div class="agent-card">
-            <h3 class="agent-title">Promotion Bot</h3>
-            <div class="agent-price">$4,997</div>
-            <div class="value">Perceived Value: $5,997</div>
-            <p class="description">Drives traffic with subtle promos.</p>
-            <div class="platforms">
-              <img src="x-logo.png" alt="X">
-              <img src="instagram-logo.png" alt="Instagram">
-              <img src="tiktok-logo.png" alt="TikTok">
-            </div>
-            <a href="promotion-bot.html" class="learn-more-button">Learn More</a>
-            <a href="#purchase" class="learn-more-button" style="margin-top:.5rem">Buy Now</a>
-          </div>
-          <div class="agent-card">
-            <h3 class="agent-title">Custom Agent Builder</h3>
-            <div class="agent-price">$4,997</div>
-            <div class="value">Perceived Value: $5,997</div>
-            <p class="description">Build unlimited custom agents.</p>
-            <div class="platforms">
-              <img src="x-logo.png" alt="X">
-            </div>
-            <a href="custom-agent-builder.html" class="learn-more-button">Learn More</a>
-            <a href="#purchase" class="learn-more-button" style="margin-top:.5rem">Buy Now</a>
-          </div>
-          <div class="agent-card">
-            <h3 class="agent-title">Chat Bot</h3>
-            <div class="agent-price">$2,997</div>
-            <div class="value">Perceived Value: $4,997</div>
-            <p class="description">Embedded AI assistant for leads/support.</p>
-            <div class="platforms">
-              <img src="x-logo.png" alt="X">
-            </div>
-            <a href="chat-bot.html" class="learn-more-button">Learn More</a>
-            <a href="#purchase" class="learn-more-button" style="margin-top:.5rem">Buy Now</a>
-          </div>
+  <!-- Your full existing header/nav/hero/grid/features/bundles sections - unchanged -->
+  <!-- ... paste everything up to the purchase section ... -->
 
-          <!-- Coming Soon Agents -->
-          <div class="agent-card">
-            <h3 class="agent-title">Channel Optimization Agent</h3>
-            <div class="coming-soon">COMING SOON</div>
-            <div class="agent-price">$4,997</div>
-            <div class="value">Perceived Value: $6,997</div>
-            <p class="description">Grows your social channels with algorithm-optimized content and scheduling.</p>
-            <div class="platforms">
-              <img src="x-logo.png" alt="X">
-              <img src="youtube-logo.png" alt="YouTube">
-              <img src="tiktok-logo.png" alt="TikTok">
-              <img src="instagram-logo.png" alt="Instagram">
-            </div>
-            <a href="channel-optimization-agent.html" class="learn-more-button">Find Out More</a>
-          </div>
-          <div class="agent-card">
-            <h3 class="agent-title">Video Content Automation Agent</h3>
-            <div class="coming-soon">COMING SOON</div>
-            <div class="agent-price">$14,997</div>
-            <div class="value">Perceived Value: $19,997</div>
-            <p class="description">Pulls and posts single videos automatically.</p>
-            <div class="platforms">
-              <img src="youtube-logo.png" alt="YouTube">
-              <img src="vimeo-logo.png" alt="Vimeo">
-              <img src="rumble-logo.png" alt="Rumble">
-            </div>
-            <a href="video-content-automation-agent.html" class="notify-button">Notify Me</a>
-          </div>
-          <div class="agent-card">
-            <h3 class="agent-title">Supercuts Agent</h3>
-            <div class="coming-soon">COMING SOON</div>
-            <div class="agent-price">$7,997</div>
-            <div class="value">Perceived Value: $9,997</div>
-            <p class="description">Creates genre-based supercut videos.</p>
-            <div class="platforms">
-              <img src="youtube-logo.png" alt="YouTube">
-              <img src="tiktok-logo.png" alt="TikTok">
-            </div>
-            <a href="supercuts-agent.html" class="notify-button">Notify Me</a>
-          </div>
-          <div class="agent-card">
-            <h3 class="agent-title">Written Content Agent</h3>
-            <div class="coming-soon">COMING SOON</div>
-            <div class="agent-price">$9,997</div>
-            <div class="value">Perceived Value: $12,997</div>
-            <p class="description">Turns written material into posts with images.</p>
-            <div class="platforms">
-              <img src="linkedin-logo.png" alt="LinkedIn">
-              <img src="x-logo.png" alt="X">
-            </div>
-            <a href="written-content-agent.html" class="notify-button">Notify Me</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="bundle" id="bundles">
-      <div class="container">
-        <h2 class="section-title">Bundles – Best Value</h2>
-        <div class="bundles-grid">
-          <div class="bundle-card">
-            <h3>Content Creator Bundle</h3>
-            <div class="bundle-price">$19,997</div>
-            <div class="bundle-value">Save $10,000+</div>
-            <p>Social Content Generator + Reply Bot + Promotion Bot + Chat Bot</p>
-            <a href="#purchase" class="learn-more-button">Buy Bundle</a>
-          </div>
-          <div class="bundle-card">
-            <h3>Video Creator Bundle</h3>
-            <div class="coming-soon">COMING SOON</div>
-            <div class="bundle-price">$24,997</div>
-            <div class="bundle-value">Save $15,000+</div>
-            <p>Video Content Automation + Supercuts + Promotion Bot + Chat Bot</p>
-            <a href="#purchase" class="notify-button">Notify Me</a>
-          </div>
-          <div class="bundle-card">
-            <h3>Engagement Boost Add-On</h3>
-            <div class="bundle-price">$6,997</div>
-            <p>Reply Bot + Chat Bot</p>
-            <a href="#purchase" class="learn-more-button">Buy Bundle</a>
-          </div>
-          <div class="bundle-card">
-            <h3>Flagship Everything Bundle</h3>
-            <div class="bundle-price">$44,997</div>
-            <div class="bundle-value">Perceived Value: $58,988</div>
-            <p>All current + future agents. Lifetime.</p>
-            <a href="#purchase" class="learn-more-button">Buy Bundle</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="purchase-form" id="purchase">
-      <div class="container">
-        <h2 class="section-title">Purchase Your AI Agent</h2>
-        <p style="text-align:center;max-width:800px;margin:0 auto 2rem;color:#4a5568">
-          Select your agent or bundle below. No payment required now — you'll receive your custom agent package within 24 hours after review.
-        </p>
-        <div id="success-message" class="success-message">
-          <p id="success-text"></p>
-        </div>
-        <form id="purchase-form" action="https://script.google.com/macros/s/AKfycbwtALs1wdsehEDOODAASBbv6ZPpltvOApPYx8YQIrDpRrABrco2mQIBJoXoLBUfb2Y/exec" method="post" onsubmit="handleFormSubmit(event)" style="max-width:600px;margin:0 auto;background:#f8fafc;padding:3rem;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1)">
-          <div style="margin-bottom:1.5rem">
-            <label style="display:block;margin-bottom:.5rem;font-weight:600">Your Name</label>
-            <input type="text" name="name" required style="width:100%;padding:1rem;border:1px solid #e5e5e5;border-radius:8px;font-size:1rem"/>
-          </div>
-          <div style="margin-bottom:1.5rem">
-            <label style="display:block;margin-bottom:.5rem;font-weight:600">Email</label>
-            <input type="email" name="email" required style="width:100%;padding:1rem;border:1px solid #e5e5e5;border-radius:8px;font-size:1rem"/>
-          </div>
-          <div style="margin-bottom:1.5rem">
-            <label style="display:block;margin-bottom:.5rem;font-weight:600">Select Agent or Bundle</label>
-            <select name="agent" required style="width:100%;padding:1rem;border:1px solid #e5e5e5;border-radius:8px;font-size:1rem">
-              <option value="" disabled selected>Choose your agent or bundle...</option>
-              <optgroup label="Available Now">
-                <option value="REPLY_BOT">Reply Bot Agent - $4,997</option>
-                <option value="PROMOTION_BOT">Promotion Bot - $4,997</option>
-                <option value="CUSTOM">Custom Agent Build - $4,997</option>
-                <option value="CHAT_BOT">Chat Bot Agent - $2,997</option>
-                <option value="CONTENT_CREATOR_BUNDLE">Content Creator Bundle - $19,997</option>
-                <option value="ENGAGEMENT_BOOST">Engagement Boost Add-On - $6,997</option>
-                <option value="FLAGSHIP">Flagship Everything Bundle - $44,997</option>
-              </optgroup>
-              <optgroup label="Coming Soon">
-                <option value="CHANNEL_OPTIMIZATION">Channel Optimization Agent - $4,997</option>
-                <option value="VIDEO_AUTOMATION">Video Automation Agent - $14,997</option>
-                <option value="SUPERCUTS">Supercuts Agent - $7,997</option>
-                <option value="WRITTEN_CONTENT">Written Content Agent - $9,997</option>
-                <option value="VIDEO_CREATOR_BUNDLE">Video Creator Bundle - $24,997</option>
-              </optgroup>
-            </select>
-          </div>
-          <div style="margin-bottom:1.5rem">
-            <label style="display:block;margin-bottom:.5rem;font-weight:600">Notes (optional)</label>
-            <textarea name="notes" rows="4" style="width:100%;padding:1rem;border:1px solid #e5e5e5;border-radius:8px;font-size:1rem;resize:vertical"></textarea>
-          </div>
-          <button type="submit" style="width:100%;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1.2rem;border:none;border-radius:8px;font-size:1.2rem;font-weight:600;cursor:pointer">
-            Submit Order
-          </button>
-        </form>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
+  <!-- Updated Unified Purchase Section -->
+  <section id="purchase" style="padding:80px 0;background:rgba(255,255,255,0.05)">
+    <div class="container" style="max-width:800px;margin:0 auto;text-align:center">
+      <h2 style="font-size:3rem;margin-bottom:2rem">Purchase Your AI Agent</h2>
+      <p style="font-size:1.2rem;margin-bottom:3rem">Most delivered within 1 business day. Complex requests reviewed in 2-3 days.</p>
+      <form id="purchaseForm">
+        <select id="agentSelect" required style="width:100%;padding:1rem;margin-bottom:1rem;background:rgba(255,255,255,0.1);border:1px solid #667eea;color:#fff;border-radius:8px;font-size:1rem">
+          <option value="">Select Agent or Bundle</option>
+          <option value="Channel Optimization Agent|4997">Channel Optimization Agent - $4,997</option>
+          <option value="Video Content Automation Agent|14997">Video Content Automation Agent - $14,997</option>
+          <option value="Supercuts Agent|7997">Supercuts Agent - $7,997</option>
+          <option value="Written Content Agent|9997">Written Content Agent - $9,997</option>
+          <option value="Content Creator Bundle|19997">Content Creator Bundle - $19,997</option>
+          <option value="Video Creator Bundle|24997">Video Creator Bundle - $24,997</option>
+          <option value="Engagement Boost Add-On|6997">Engagement Boost Add-On - $6,997</option>
+          <option value="Flagship Everything Bundle|44997">Flagship Everything Bundle - $44,997</option>
+        </select>
+        <input type="text" id="customerName" placeholder="Your Name" required style="width:100%;padding:1rem;margin-bottom:1rem;background:rgba(255,255,255,0.1);border:1px solid #667eea;color:#fff;border-radius:8px;font-size:1rem">
+        <input type="email" id="customerEmail" placeholder="Your Email (for delivery)" required style="width:100%;padding:1rem;margin-bottom:1rem;background:rgba(255,255,255,0.1);border:1px solid #667eea;color:#fff;border-radius:8px;font-size:1rem">
+        <textarea id="specialNotes" placeholder="Customization specs or special requests (keep standard for auto-processing)" rows="5" style="width:100%;padding:1rem;margin-bottom:1rem;background:rgba(255,255,255,0.1);border:1px solid #667eea;color:#fff;border-radius:8px;font-size:1rem"></textarea>
+        <button type="submit" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1.2rem 3rem;border:none;border-radius:12px;font-size:1.5rem;font-weight:600;cursor:pointer">Submit & Proceed</button>
+      </form>
+      <div id="paypalContainer" style="display:none;margin-top:2rem"></div>
+      <div id="statusMsg" style="margin-top:1rem;font-size:1.2rem"></div>
     </div>
-  </footer>
+  </section>
+
+  <!-- Thank You Overlay (replaces separate page for simplicity) -->
+  <div id="thankYouOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1000;justify-content:center;align-items:center;text-align:center">
+    <div style="max-width:600px;padding:3rem;background:#1a1a3e;border-radius:20px">
+      <h1 style="font-size:3rem;margin-bottom:2rem">Payment Received!</h1>
+      <p style="font-size:1.8rem">Thank you for your business. Your purchases will be emailed to the address you provided within 1 business day.</p>
+      <button onclick="document.getElementById('thankYouOverlay').style.display='none'" style="margin-top:2rem;background:#667eea;color:#fff;padding:1rem 2rem;border:none;border-radius:8px;cursor:pointer">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const prices = {
+      'Channel Optimization Agent': 4997,
+      'Video Content Automation Agent': 14997,
+      'Supercuts Agent': 7997,
+      'Written Content Agent': 9997,
+      'Content Creator Bundle': 19997,
+      'Video Creator Bundle': 24997,
+      'Engagement Boost Add-On': 6997,
+      'Flagship Everything Bundle': 44997
+    };
+
+    document.getElementById('purchaseForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const [agent, _] = document.getElementById('agentSelect').value.split('|');
+      const name = document.getElementById('customerName').value;
+      const email = document.getElementById('customerEmail').value;
+      const notes = document.getElementById('specialNotes').value.trim();
+      const data = {agent, name, email, notes};
+
+      // Simple complex check: notes >200 chars or keywords like "custom", "special", etc.
+      const isComplex = notes.length > 200 || /custom|special|modify|change/i.test(notes);
+
+      if (isComplex) {
+        // Send to backend for your review
+        await fetch('YOUR_WEBAPP_URL/doPost', {
+          method: 'POST',
+          body: JSON.stringify({action: 'complexReview', data})
+        });
+        document.getElementById('statusMsg').innerHTML = '<p style="color:#f87171">Custom request received. We\'ll review and reply within 2-3 days.</p>';
+      } else {
+        // Standard - show PayPal
+        const amount = prices[agent];
+        const paypalForm = `
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="michaeltleatherwood@gmail.com">
+            <input type="hidden" name="item_name" value="ScriptAndScale AI - ${agent}">
+            <input type="hidden" name="amount" value="${amount}.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="return" value="${window.location.href}?paid=true">
+            <input type="hidden" name="cancel_return" value="${window.location.href}">
+            <input type="hidden" name="custom" value="${btoa(JSON.stringify(data))}">
+            <button type="submit" style="background:#ffc439;color:#000;padding:1.5rem 3rem;border:none;border-radius:12px;font-size:1.5rem;font-weight:600;cursor:pointer">Pay $${amount.toLocaleString()} via PayPal →</button>
+          </form>`;
+        document.getElementById('paypalContainer').innerHTML = paypalForm;
+        document.getElementById('paypalContainer').style.display = 'block';
+        document.getElementById('statusMsg').innerHTML = '<p style="color:#4ade80">Standard request approved! Complete payment below.</p>';
+        // Log standard to backend
+        await fetch('YOUR_WEBAPP_URL/doPost', {method: 'POST', body: JSON.stringify({action: 'logPending', data})});
+      }
+    });
+
+    // On load check for PayPal return
+    if (window.location.search.includes('paid=true')) {
+      document.getElementById('thankYouOverlay').style.display = 'flex';
+      // Log sale from custom param
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('custom')) {
+        const data = JSON.parse(atob(params.get('custom')));
+        fetch('YOUR_WEBAPP_URL/doPost', {method: 'POST', body: JSON.stringify({action: 'logSale', data})});
+      }
+      history.replaceState({}, '', window.location.pathname);
+    }
+  </script>
+
+  <!-- Your footer - unchanged -->
 </body>
 </html>
