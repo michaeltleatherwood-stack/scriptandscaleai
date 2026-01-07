@@ -6,6 +6,7 @@
   <title>ScriptAndScale AI - Premium AI Automation Agents</title>
   <meta name="description" content="Lifetime ownership AI agents for X/Twitter automation. One-time payment, full resale rights."/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0f0f23, #1a1a3e); color: #fff; min-height: 100vh; }
@@ -19,6 +20,8 @@
     .hero p { font-size: 1.5rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; }
     .buy-button { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 1.2rem 3rem; border: none; border-radius: 12px; font-size: 1.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 30px rgba(102,126,234,0.3); }
     .buy-button:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(102,126,234,0.4); }
+    .learn-more { background: transparent; border: 1px solid #667eea; color: #667eea; padding: 1rem 2rem; border-radius: 12px; font-size: 1.3rem; cursor: pointer; transition: all 0.3s; margin: 0 1rem; }
+    .learn-more:hover { background: #667eea; color: #fff; }
     section { padding: 80px 0; }
     .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem; }
     .agent-card { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s; border: 1px solid rgba(102,126,234,0.2); }
@@ -27,7 +30,8 @@
     .agent-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
     .agent-card p { font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.9; }
     .price { font-size: 1.8rem; font-weight: 700; margin: 1.5rem 0; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .coming-soon { color: #aaa; font-style: italic; }
+    .coming-soon { color: #aaa; font-style: italic; margin: 1.5rem 0; }
+    .buttons { display: flex; justify-content: center; gap: 1rem; }
     .bundles { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 4rem; }
     .bundle-card { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); border-radius: 20px; padding: 2.5rem; text-align: center; border: 1px solid rgba(102,126,234,0.3); }
     .bundle-card h3 { font-size: 2.2rem; margin-bottom: 1rem; }
@@ -36,18 +40,22 @@
     .bundle-card .price { font-size: 2.5rem; margin: 2rem 0; }
     #purchase { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 3rem; max-width: 800px; margin: 0 auto; }
     #purchase h2 { font-size: 3rem; margin-bottom: 2rem; text-align: center; }
-    #purchase p { text-align: center; margin-bottom: 2rem; }
+    #purchase p { text-align: center; margin-bottom: 2rem; font-size: 1.2rem; }
     #purchase form { display: grid; gap: 1rem; }
     #purchase input, #purchase select, #purchase textarea { width: 100%; padding: 1rem; background: rgba(255,255,255,0.1); border: 1px solid #667eea; color: #fff; border-radius: 12px; font-size: 1rem; }
     #purchase input::placeholder, #purchase textarea::placeholder { color: #aaa; }
     #purchase button { margin-top: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); padding: 1.2rem; border: none; border-radius: 12px; font-size: 1.5rem; cursor: pointer; }
     #successMsg { display: none; margin-top: 2rem; font-size: 1.5rem; color: #4ade80; text-align: center; }
     footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 5rem; }
-    @media (max-width: 768px) {
+    .social-logos { margin-top: 2rem; }
+    .social-logos a { color: #fff; margin: 0 1rem; font-size: 1.5rem; transition: 0.3s; }
+    .social-logos a:hover { color: #667eea; }
+    @media (max-width: 768px) { 
       h1 { font-size: 3rem; }
       .hero p { font-size: 1.2rem; }
       .agents-grid { grid-template-columns: 1fr; }
       .bundles { grid-template-columns: 1fr; }
+      .buttons { flex-direction: column; }
     }
   </style>
 </head>
@@ -75,60 +83,86 @@
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Social+Content" alt="Social Content Generator">
         <h3>Social Content Generator</h3>
-        <p>Daily fresh, on-brand posts. Nostalgia test case live on @ctrlaltrewind.</p>
+        <p>Daily fresh, on-brand nostalgia posts. Live on @ctrlaltrewind.</p>
         <p class="coming-soon">Included in bundles</p>
+        <div class="buttons">
+          <a href="social-content-generator.html" class="learn-more">Learn More</a>
+        </div>
       </div>
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Reply+Bot" alt="Reply Bot">
         <h3>Reply Bot</h3>
         <p>Gen X voice, catches all direct replies + mentions. Live.</p>
         <p class="coming-soon">Included in bundles</p>
+        <div class="buttons">
+          <a href="reply-bot.html" class="learn-more">Learn More</a>
+        </div>
       </div>
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Promotion+Bot" alt="Promotion Bot">
         <h3>Promotion Bot</h3>
-        <p>Drive real traffic with subtle promo posts.</p>
+        <p>Real traffic-driving version ready to build.</p>
         <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <a href="promotion-bot.html" class="learn-more">Learn More</a>
+        </div>
       </div>
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Custom+Builder" alt="Custom Agent Builder">
         <h3>Custom Agent Builder</h3>
-        <p>Backend ready for integration.</p>
-        <p class="coming-soon">Coming Soon</p>
+        <p>Ready for backend integration.</p>
+        <div class="buttons">
+          <a href="custom-agent-builder.html" class="learn-more">Learn More</a>
+        </div>
       </div>
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Channel+Opt" alt="Channel Optimization Agent">
         <h3>Channel Optimization Agent</h3>
-        <p>Resale code v1.1 ready (neutral, customer-configurable).</p>
+        <p>Resale code v1.1 saved (neutral, customer-configurable). Page live with "Coming Soon".</p>
         <p class="price">$4,997</p>
-        <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+        <div class="buttons">
+          <a href="channel-optimization.html" class="learn-more">Learn More</a>
+          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+        </div>
       </div>
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Video+Content" alt="Video Content Automation Agent">
         <h3>Video Content Automation Agent</h3>
         <p>Coming Soon page live.</p>
         <p class="price">$14,997</p>
-        <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+        <div class="buttons">
+          <a href="video-content-automation.html" class="learn-more">Learn More</a>
+          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+        </div>
       </div>
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Supercuts" alt="Supercuts Agent">
         <h3>Supercuts Agent</h3>
-        <p>Coming Soon.</p>
+        <p>Coming Soon page live.</p>
         <p class="price">$7,997</p>
-        <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+        <div class="buttons">
+          <a href="supercuts-agent.html" class="learn-more">Learn More</a>
+          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+        </div>
       </div>
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Chat+Bot" alt="Chat Bot">
         <h3>Chat Bot</h3>
         <p>Live on site.</p>
         <p class="coming-soon">Included in bundles</p>
+        <div class="buttons">
+          <a href="chat-bot.html" class="learn-more">Learn More</a>
+        </div>
       </div>
       <div class="agent-card">
         <img src="https://via.placeholder.com/300x200/667eea/fff?text=Written+Content" alt="Written Content Agent">
         <h3>Written Content Agent</h3>
-        <p>Coming Soon.</p>
+        <p>Coming Soon page live.</p>
         <p class="price">$9,997</p>
-        <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+        <div class="buttons">
+          <a href="written-content-agent.html" class="learn-more">Learn More</a>
+          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+        </div>
       </div>
     </div>
   </section>
@@ -145,7 +179,9 @@
           <li>Promotion Bot</li>
           <li>Chat Bot</li>
         </ul>
-        <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Bundle</button>
+        <div class="buttons">
+          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Bundle</button>
+        </div>
       </div>
       <div class="bundle-card">
         <h3>Video Creator Bundle</h3>
@@ -156,7 +192,9 @@
           <li>Promotion Bot</li>
           <li>Chat Bot</li>
         </ul>
-        <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Bundle</button>
+        <div class="buttons">
+          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Bundle</button>
+        </div>
       </div>
       <div class="bundle-card">
         <h3>Engagement Boost Add-On</h3>
@@ -165,13 +203,17 @@
           <li>Reply Bot</li>
           <li>Chat Bot</li>
         </ul>
-        <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Add-On</button>
+        <div class="buttons">
+          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Add-On</button>
+        </div>
       </div>
       <div class="bundle-card">
         <h3>Flagship Everything Bundle</h3>
         <p class="price">$44,997</p>
-        <p>All current agents + all future agents. Lifetime updates.</p>
-        <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Everything Bundle</button>
+        <p>All current + future agents. Lifetime.</p>
+        <div class="buttons">
+          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Everything</button>
+        </div>
       </div>
     </div>
   </section>
@@ -197,13 +239,18 @@
         <textarea name="note" placeholder="Customization specs or special requests (keep standard for auto-processing)" rows="5"></textarea>
         <button type="submit">Submit & Proceed</button>
       </form>
-      <p id="successMsg">Thank you for your business. Your purchases will be emailed to the address you provided within 1 business day.</p>
+      <p id="successMsg" style="display: none;">Thank you for your business. Your purchases will be emailed to the address you provided within 1 business day.</p>
     </div>
   </section>
 
   <footer>
     <div class="container">
       <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
+      <div class="social-logos">
+        <a href="https://twitter.com/ctrlaltrewind" class="fa-brands fa-x-twitter"></a>
+        <a href="https://facebook.com/scriptandscaleai" class="fa-brands fa-facebook"></a>
+        <a href="https://instagram.com/scriptandscaleai" class="fa-brands fa-instagram"></a>
+      </div>
     </div>
   </footer>
 
