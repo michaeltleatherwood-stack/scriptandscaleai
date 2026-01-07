@@ -28,6 +28,8 @@
     .features li{font-size:1.2rem;padding:.75rem 0;position:relative;padding-left:2rem}
     .features li:before{content:"✓";color:#10b981;position:absolute;left:0;font-weight:bold;font-size:1.5rem}
     footer{background:#1a1a1a;color:#e2e8f0;padding:3rem 0;text-align:center}
+    footer a { color: #e2e8f0; margin: 0 1rem; text-decoration: none; font-size: 0.9rem; }
+    footer a:hover { color: #667eea; }
     @media (max-width:768px){
       .agent-title{font-size:2.8rem}
       .agent-price{font-size:2.5rem}
@@ -72,7 +74,7 @@
         <ul class="features">
           <li>Automated video generation</li>
           <li>Custom styles and themes</li>
-          <li>Multi-platform ready</li>
+          <li>Multi-platform export</li>
           <li>Lifetime ownership</li>
           <li>Full resale rights</li>
         </ul>
@@ -81,8 +83,25 @@
   </main>
   <footer>
     <div class="container">
-      <p>© 2026 ScriptAndScale AI. All rights reserved.</p>
+      <p>© 2026 ScriptAndScale AI</p>
+      <p>
+        <a href="contact.html">Contact</a> • 
+        <a href="privacy.html">Privacy Policy</a> • 
+        <a href="terms.html">Terms of Service</a> • 
+        <a href="disclaimer.html">Disclaimer</a>
+      </p>
     </div>
   </footer>
+
+  <!-- Live Chat Bot Embed -->
+  <script>
+    // Replace with your actual chat bot embed script if different
+    (function() {
+      var script = document.createElement('script');
+      script.src = 'YOUR_CHAT_BOT_EMBED_SCRIPT_URL'; // If hosted, put the URL here
+      script.async = true;
+      document.body.appendChild(script);
+    })();
+  </script>
 </body>
 </html>
