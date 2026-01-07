@@ -23,7 +23,7 @@
     .agents-grid, .bundles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
     .card { background: rgba(102,126,234,0.05); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s; border: 1px solid rgba(102,126,234,0.2); }
     .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(102,126,234,0.2); }
-    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; }
+    .card img { width: 100%; height: auto; max-height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; }
     .card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #764ba2; }
     .card p { font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.9; }
     .price { font-size: 2rem; font-weight: 700; margin: 1.5rem 0; color: #764ba2; }
@@ -33,12 +33,15 @@
     .btn-more:hover { background: #667eea; color: #fff; }
     .btn-buy { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 0.8rem 2rem; border: none; border-radius: 12px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; }
     .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(102,126,234,0.3); }
-    .social-logos { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
+    .social-logos { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; }
     .social-logos img { width: 30px; height: 30px; }
     footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(102,126,234,0.1); }
     @media (max-width: 768px) {
       .hero h1 { font-size: 3rem; }
       .buttons { flex-direction: column; }
+      .card img { max-height: 150px; }
+      .social-logos img { width: 24px; height: 24px; }
+      .social-logos { gap: 0.4rem; }
     }
   </style>
 </head>
@@ -71,9 +74,13 @@
           <button class="btn-buy" onclick="location.href='social-content-generator.html'">Buy Now</button>
         </div>
         <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+          <img src="X icon.png" alt="X">
+          <img src="facebook icon.png" alt="Facebook">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit">
         </div>
       </div>
 
@@ -86,9 +93,10 @@
           <button class="btn-more" onclick="location.href='reply-bot.html'">Learn More</button>
         </div>
         <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+          <img src="X icon.png" alt="X">
+          <img src="facebook icon.png" alt="Facebook">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="linkedin-logo.png" alt="LinkedIn">
         </div>
       </div>
 
@@ -101,9 +109,10 @@
           <button class="btn-more" onclick="location.href='promotion-bot.html'">Learn More</button>
         </div>
         <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+          <img src="X icon.png" alt="X">
+          <img src="facebook icon.png" alt="Facebook">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="linkedin-logo.png" alt="LinkedIn">
         </div>
       </div>
 
@@ -115,11 +124,7 @@
         <div class="buttons">
           <button class="btn-more" onclick="location.href='custom-agent-builder.html'">Learn More</button>
         </div>
-        <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
-        </div>
+        <!-- No logos -->
       </div>
 
       <div class="card">
@@ -132,9 +137,11 @@
           <button class="btn-more" onclick="location.href='channel-optimization-agent.html'">Learn More</button>
         </div>
         <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+          <img src="X icon.png" alt="X">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="facebook icon.png" alt="Facebook">
         </div>
       </div>
 
@@ -148,9 +155,10 @@
           <button class="btn-more" onclick="location.href='video-content-automation-agent.html'">Learn More</button>
         </div>
         <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="vimeo-logo.png" alt="Vimeo">
+          <img src="rumble-logo.png" alt="Rumble">
         </div>
       </div>
 
@@ -164,9 +172,10 @@
           <button class="btn-more" onclick="location.href='supercuts-agent.html'">Learn More</button>
         </div>
         <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="vimeo-logo.png" alt="Vimeo">
+          <img src="rumble-logo.png" alt="Rumble">
         </div>
       </div>
 
@@ -179,11 +188,7 @@
           <button class="btn-more" onclick="location.href='chat-bot.html'">Learn More</button>
           <button class="btn-buy" onclick="location.href='chat-bot.html'">Buy Now</button>
         </div>
-        <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
-        </div>
+        <!-- No logos -->
       </div>
 
       <div class="card">
@@ -196,9 +201,9 @@
           <button class="btn-more" onclick="location.href='written-content-agent.html'">Learn More</button>
         </div>
         <div class="social-logos">
-          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
-          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
-          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+          <img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit">
+          <img src="facebook icon.png" alt="Facebook">
         </div>
       </div>
     </div>
