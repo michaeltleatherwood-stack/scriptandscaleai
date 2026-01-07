@@ -35,9 +35,6 @@
     .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(102,126,234,0.3); }
     .social-logos { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
     .social-logos img { width: 30px; height: 30px; }
-    .details-section { background: rgba(102,126,234,0.05); border-radius: 20px; padding: 3rem; max-width: 800px; margin: 0 auto; }
-    .details-section form { display: grid; gap: 1rem; }
-    .details-section input, .details-section select, .details-section textarea { padding: 1rem; border: 1px solid #667eea; border-radius: 12px; background: #fff; color: #0f0f23; }
     footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(102,126,234,0.1); }
     @media (max-width: 768px) {
       .hero h1 { font-size: 3rem; }
@@ -71,7 +68,7 @@
         <p class="price">$9,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='social-content-generator.html'">Learn More</button>
-          <button class="btn-buy" onclick="scrollToDetails('Social Content Generator - $9,997')">Buy Now</button>
+          <button class="btn-buy" onclick="location.href='social-content-generator.html'">Buy Now</button>
         </div>
         <div class="social-logos">
           <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
@@ -180,7 +177,7 @@
         <p class="price">$2,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='chat-bot.html'">Learn More</button>
-          <button class="btn-buy" onclick="scrollToDetails('Chat Bot - $2,997')">Buy Now</button>
+          <button class="btn-buy" onclick="location.href='chat-bot.html'">Buy Now</button>
         </div>
         <div class="social-logos">
           <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
@@ -214,61 +211,34 @@
         <h3>Content Creator Bundle</h3>
         <p>Includes: Social Content Generator, Reply Bot, Promotion Bot, Chat Bot</p>
         <p class="price">$19,997</p>
+        <p class="coming-soon">Coming Soon</p>
         <div class="buttons">
-          <!-- No Buy Now -->
         </div>
       </div>
       <div class="card">
         <h3>Video Creator Bundle</h3>
         <p>Includes: Video Content Automation, Supercuts Agent, Promotion Bot, Chat Bot</p>
         <p class="price">$24,997</p>
+        <p class="coming-soon">Coming Soon</p>
         <div class="buttons">
-          <!-- No Buy Now -->
         </div>
       </div>
       <div class="card">
         <h3>Engagement Boost Add-On</h3>
         <p>Includes: Reply Bot, Chat Bot</p>
         <p class="price">$6,997</p>
+        <p class="coming-soon">Coming Soon</p>
         <div class="buttons">
-          <!-- No Buy Now -->
         </div>
       </div>
       <div class="card">
         <h3>Flagship Everything Bundle</h3>
         <p>All current + future agents. Lifetime.</p>
         <p class="price">$44,997</p>
+        <p class="coming-soon">Coming Soon</p>
         <div class="buttons">
-          <!-- No Buy Now -->
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="container" id="details">
-    <div class="details-section">
-      <h2>Provide Your Details</h2>
-      <p style="text-align:center;margin-bottom:2rem;">Selected product will appear below. Fill in all info needed for your custom agent build.</p>
-      <form id="purchaseForm">
-        <select id="productSelect" required>
-          <option value="">Select Product</option>
-          <option>Social Content Generator - $9,997</option>
-          <option>Chat Bot - $2,997</option>
-        </select>
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <input type="text" placeholder="X/Twitter Handle">
-        <input type="text" placeholder="Facebook Page URL">
-        <input type="text" placeholder="Instagram Handle">
-        <input type="text" placeholder="YouTube Channel URL">
-        <input type="text" placeholder="TikTok Username">
-        <input type="text" placeholder="LinkedIn Profile URL">
-        <input type="text" placeholder="Reddit Username">
-        <textarea placeholder="Brand Voice / Niche Description" rows="4" required></textarea>
-        <textarea placeholder="Detailed Explanation of Needs / Customizations" rows="6" required></textarea>
-        <button type="submit" class="btn-buy" style="width:100%;padding:1.2rem;font-size:1.3rem;">Submit & Proceed</button>
-      </form>
-      <p id="successMsg" style="display:none;color:#4ade80;text-align:center;margin-top:2rem;font-size:1.5rem;">Submitted! We'll review and process your order.</p>
     </div>
   </section>
 
@@ -280,17 +250,5 @@
       <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
     </div>
   </footer>
-
-  <script>
-    function scrollToDetails(product) {
-      document.getElementById('productSelect').value = product;
-      document.getElementById('details').scrollIntoView({behavior: 'smooth'});
-    }
-    // Placeholder for form submit - replace with your Apps Script web app URL later
-    document.getElementById('purchaseForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      document.getElementById('successMsg').style.display = 'block';
-    });
-  </script>
 </body>
 </html>
