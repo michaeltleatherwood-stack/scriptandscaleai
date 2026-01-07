@@ -82,8 +82,6 @@
         </div>
       </div>
 
-      <!-- All other cards same as last code, just without <img> tag and increased padding for balance -->
-
       <div class="card">
         <h3>Reply Bot</h3>
         <p>Intelligent automated replies and engagement.</p>
@@ -99,14 +97,151 @@
         </div>
       </div>
 
-      <!-- Repeat for all 9 agents and 4 bundles with no <img>, same logos/buttons as last -->
+      <div class="card">
+        <h3>Promotion Bot</h3>
+        <p>Real traffic-driving promotion agent.</p>
+        <p class="price">$4,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='promotion-bot.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X">
+          <img src="facebook icon.png" alt="Facebook">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="linkedin-logo.png" alt="LinkedIn">
+        </div>
+      </div>
 
-      <!-- (Full code truncated for brevity, but it's the same as previous with <img> lines removed and padding 2.5rem on .card for balance) -->
+      <div class="card">
+        <h3>Custom Agent Builder</h3>
+        <p>Create fully custom automation agents.</p>
+        <p class="price">$4,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='custom-agent-builder.html'">Learn More</button>
+        </div>
+      </div>
 
+      <div class="card">
+        <h3>Channel Optimization Agent</h3>
+        <p>Customer-configurable optimization agent.</p>
+        <p class="price">$4,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='channel-optimization-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="facebook icon.png" alt="Facebook">
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Video Content Automation Agent</h3>
+        <p>Automated video content creation.</p>
+        <p class="price">$14,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='video-content-automation-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="vimeo-logo.png" alt="Vimeo">
+          <img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Supercuts Agent</h3>
+        <p>Automated supercut video creation.</p>
+        <p class="price">$7,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='supercuts-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="vimeo-logo.png" alt="Vimeo">
+          <img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Chat Bot</h3>
+        <p>Live site and platform chat automation.</p>
+        <p class="price">$2,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='chat-bot.html'">Learn More</button>
+          <button class="btn-buy" onclick="location.href='chat-bot.html'">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Written Content Agent</h3>
+        <p>Automated written content generation.</p>
+        <p class="price">$9,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='written-content-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit">
+          <img src="facebook icon.png" alt="Facebook">
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Bundles and footer same -->
+  <section class="container" id="bundles">
+    <h2>Our Bundles</h2>
+    <div class="bundles-grid">
+      <div class="card">
+        <h3>Content Creator Bundle</h3>
+        <p>Includes: Social Content Generator, Reply Bot, Promotion Bot, Chat Bot</p>
+        <p class="price">$19,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Video Creator Bundle</h3>
+        <p>Includes: Video Content Automation, Supercuts Agent, Promotion Bot, Chat Bot</p>
+        <p class="price">$24,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Engagement Boost Add-On</h3>
+        <p>Includes: Reply Bot, Chat Bot</p>
+        <p class="price">$6,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Flagship Everything Bundle</h3>
+        <p>All current + future agents. Lifetime.</p>
+        <p class="price">$44,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <footer>
+    <p>© 2026 ScriptAndScale AI</p>
+    <div class="social-logos" style="margin-top:1rem;">
+      <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+      <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+      <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+    </div>
+  </footer>
 </body>
 </html>
