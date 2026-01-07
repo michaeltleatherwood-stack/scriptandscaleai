@@ -35,6 +35,8 @@
     .social-logos { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; }
     .social-logos img { width: 30px; height: 30px; }
     footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(102,126,234,0.1); }
+    footer a { color: #aaa; margin: 0 1rem; text-decoration: none; font-size: 0.9rem; }
+    footer a:hover { color: #667eea; }
     @media (max-width: 768px) {
       .hero h1 { font-size: 3rem; }
       .buttons { flex-direction: column; }
@@ -240,11 +242,29 @@
 
   <footer>
     <p>© 2026 ScriptAndScale AI</p>
+    <p>
+      <a href="contact.html">Contact</a> • 
+      <a href="privacy.html">Privacy Policy</a> • 
+      <a href="terms.html">Terms of Service</a> • 
+      <a href="disclaimer.html">Disclaimer</a>
+    </p>
     <div class="social-logos" style="margin-top:1rem;">
       <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
       <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
       <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
     </div>
   </footer>
+
+  <!-- Live Chat Bot Embed -->
+  <script>
+    // Chat Bot embed (adjust if you have a specific script — this is placeholder for the working one)
+    // Replace with your actual embed code if different
+    (function() {
+      var script = document.createElement('script');
+      script.src = 'YOUR_CHAT_BOT_EMBED_SCRIPT_URL'; // Replace with actual if hosted
+      script.async = true;
+      document.body.appendChild(script);
+    })();
+  </script>
 </body>
 </html>
