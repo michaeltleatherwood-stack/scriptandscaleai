@@ -8,28 +8,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;line-height:1.6;color:#1a1a1a;background:#fff}
+    body{font-family:'Inter',sans-serif;line-height:1.6;color:#667eea;background:#fff}
     .container{max-width:1000px;margin:0 auto;padding:0 20px}
-    header{background:#fff;position:fixed;top:0;width:100%;z-index:1000;border-bottom:1px solid #e5e5e5;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+    header{background:#fff;position:fixed;top:0;width:100%;z-index:1000;border-bottom:1px solid #667eea;box-shadow:0 2px 10px rgba(0,0,0,.05)}
     nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
     .logo{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .nav-links{display:flex;list-style:none;gap:2.5rem}
-    .nav-links a{text-decoration:none;color:#4a5568;font-weight:500;transition:color .3s}
-    .nav-links a:hover{color:#667eea}
+    .nav-links a{text-decoration:none;color:#667eea;font-weight:500;transition:color .3s}
+    .nav-links a:hover{color:#764ba2}
     main{margin-top:100px;padding:4rem 0}
     .agent-detail{text-align:center}
-    .agent-title{font-size:3.5rem;font-weight:800;margin-bottom:1rem}
+    .agent-title{font-size:3.5rem;font-weight:800;margin-bottom:1rem;color:#764ba2}
     .agent-price{font-size:3rem;font-weight:800;color:#667eea;margin:2rem 0}
     .value{font-size:1.5rem;color:#10b981;font-weight:600}
     .description{font-size:1.3rem;max-width:800px;margin:2rem auto;line-height:1.8;color:#4a5568}
-    .platforms{margin:3rem 0;display:flex;gap:2rem;justify-content:center}
-    .platforms img{height:60px}
     .features{max-width:700px;margin:3rem auto;text-align:left;background:#f8fafc;padding:2rem;border-radius:16px}
     .features li{font-size:1.2rem;padding:.75rem 0;position:relative;padding-left:2rem}
     .features li:before{content:"✓";color:#10b981;position:absolute;left:0;font-weight:bold;font-size:1.5rem}
-    .buy-button{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1.2rem 3rem;border:none;border-radius:12px;font-size:1.4rem;font-weight:600;cursor:pointer;margin:3rem 0;transition:transform .2s;display:inline-block}
-    .buy-button:hover{transform:translateY(-5px)}
+    .purchase-section{margin-top:5rem;padding:3rem;background:rgba(102,126,234,0.05);border-radius:20px}
+    .purchase-section h2{font-size:2.5rem;margin-bottom:2rem;color:#764ba2}
+    .purchase-form{display:grid;gap:1.2rem;max-width:700px;margin:0 auto}
+    .purchase-form input,.purchase-form textarea{width:100%;padding:1rem;border:1px solid #667eea;border-radius:12px;background:#fff;color:#0f0f23;font-size:1rem}
+    .purchase-form textarea{height:150px}
+    .submit-btn{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1.2rem;border:none;border-radius:12px;font-size:1.4rem;font-weight:600;cursor:pointer;transition:transform .2s}
+    .submit-btn:hover{transform:translateY(-5px)}
+    #successMsg{display:none;margin-top:2rem;font-size:1.5rem;color:#4ade80;text-align:center}
     footer{background:#1a1a1a;color:#e2e8f0;padding:3rem 0;text-align:center}
+    @media (max-width:768px){
+      .agent-title{font-size:2.8rem}
+      .agent-price{font-size:2.5rem}
+    }
   </style>
 </head>
 <body>
@@ -41,7 +49,6 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="index.html#agents">All Agents</a></li>
           <li><a href="index.html#bundles">Bundles</a></li>
-          <li><a href="index.html#purchase">Purchase</a></li>
         </ul>
       </nav>
     </div>
@@ -65,9 +72,6 @@
         <p class="description">
           Custom personality, training, and integration. Works alongside other agents for full automation.
         </p>
-        <div class="platforms">
-          <img src="x-logo.png" alt="X">
-        </div>
         <ul class="features">
           <li>Embedded on any site</li>
           <li>Lead capture & qualification</li>
@@ -75,14 +79,36 @@
           <li>24/7 availability</li>
           <li>Integrates with content agents</li>
         </ul>
-        <a href="index.html#purchase" class="buy-button">Buy Now - $2,997</a>
+
+        <div class="purchase-section">
+          <h2>Purchase Your Chat Bot Agent - $2,997</h2>
+          <form id="purchaseForm" class="purchase-form">
+            <input type="text" placeholder="Business/Brand Name" required>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email (for delivery)" required>
+            <input type="text" placeholder="Website URL (where bot will be embedded)" required>
+            <textarea placeholder="Brand Voice / Niche Description" required></textarea>
+            <textarea placeholder="Detailed Explanation of Needs / Customizations" required></textarea>
+            <button type="submit" class="submit-btn">Submit Details</button>
+          </form>
+          <p id="successMsg">Submitted! We'll review and process your order within 1 business day.</p>
+        </div>
       </div>
     </section>
   </main>
   <footer>
     <div class="container">
-      <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
+      <p>© 2026 ScriptAndScale AI. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('purchaseForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Replace with actual Apps Script web app URL
+      // For now, just show success
+      document.getElementById('successMsg').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
