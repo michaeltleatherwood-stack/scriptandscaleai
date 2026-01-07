@@ -69,7 +69,7 @@
         <p class="price">$9,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='social-content-generator.html'">Learn More</button>
-          <button class="btn-buy" onclick="location.href='social-content-generator.html'">Buy Now</button>
+          <button class="btn-buy" onclick="location.href='purchase.html?agent=social-content'">Buy Now</button>
         </div>
         <div class="social-logos">
           <img src="X icon.png" alt="X">
@@ -176,7 +176,7 @@
         <p class="price">$2,997</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='chat-bot.html'">Learn More</button>
-          <button class="btn-buy" onclick="location.href='chat-bot.html'">Buy Now</button>
+          <button class="btn-buy" onclick="location.href='purchase.html?agent=chat-bot'">Buy Now</button>
         </div>
       </div>
 
