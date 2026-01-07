@@ -41,27 +41,27 @@
     <h1>Purchase Your AI Agent</h1>
     <p id="agentPrice" class="price"></p>
     <div class="form-section">
-      <form id="purchaseForm" class="purchase-form">
-        <select id="agentSelect" required>
+      <form id="purchaseForm" class="purchase-form" action="https://script.google.com/macros/s/AKfycbz-PGTyn04o2N2iGdbdAqdARVobgmp-GbwXtvU_dUJRk9WwrymN1OAtn-nWJ7xDaYc/exec" method="POST">
+        <select id="agentSelect" name="agentSelect" required>
           <option value="">Select Agent</option>
           <option value="social-content">Social Content Generator - $9,997</option>
           <option value="chat-bot">Chat Bot - $2,997</option>
         </select>
-        <input type="text" placeholder="Business/Brand Name" required>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Email (for delivery)" required>
-        <div id="socialHandles" class="hidden">
-          <input type="text" placeholder="X/Twitter Handle">
-          <input type="text" placeholder="Facebook Page URL">
-          <input type="text" placeholder="Instagram Handle">
-          <input type="text" placeholder="YouTube Channel URL">
-          <input type="text" placeholder="TikTok Username">
-          <input type="text" placeholder="LinkedIn Profile URL">
-          <input type="text" placeholder="Reddit Username">
+        <input type="text" name="business" placeholder="Business/Brand Name" required>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Email (for delivery)" required>
+        <div id="socialHandles">
+          <input type="text" name="x" placeholder="X/Twitter Handle">
+          <input type="text" name="facebook" placeholder="Facebook Page URL">
+          <input type="text" name="instagram" placeholder="Instagram Handle">
+          <input type="text" name="youtube" placeholder="YouTube Channel URL">
+          <input type="text" name="tiktok" placeholder="TikTok Username">
+          <input type="text" name="linkedin" placeholder="LinkedIn Profile URL">
+          <input type="text" name="reddit" placeholder="Reddit Username">
         </div>
-        <input id="websiteURL" type="text" placeholder="Website URL (required for Chat Bot)" class="hidden">
-        <textarea placeholder="Brand Voice / Niche Description" required></textarea>
-        <textarea placeholder="Detailed Explanation of Needs / Customizations" required></textarea>
+        <input id="websiteURL" type="text" name="website" placeholder="Website URL (required for Chat Bot)" class="hidden">
+        <textarea name="voice" placeholder="Brand Voice / Niche Description" required></textarea>
+        <textarea name="details" placeholder="Detailed Explanation of Needs / Customizations" required></textarea>
         <button type="submit" class="submit-btn">Submit Details</button>
       </form>
       <p id="successMsg">Submitted! We'll review and process your order within 1 business day.</p>
@@ -109,9 +109,8 @@
     agentSelect.addEventListener('change', updateFields);
     updateFields(); // initial
 
-    document.getElementById('purchaseForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Replace with actual Apps Script URL when ready
+    // Success message on submit (since POST redirects or shows script output)
+    document.getElementById('purchaseForm').addEventListener('submit', function() {
       document.getElementById('successMsg').style.display = 'block';
     });
   </script>
