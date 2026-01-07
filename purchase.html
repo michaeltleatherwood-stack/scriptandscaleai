@@ -26,6 +26,8 @@
     #successMsg { display: none; margin-top: 2rem; font-size: 1.5rem; color: #4ade80; }
     .hidden { display: none; }
     footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(102,126,234,0.1); }
+    footer a { color: #aaa; margin: 0 1rem; text-decoration: none; font-size: 0.9rem; }
+    footer a:hover { color: #667eea; }
   </style>
 </head>
 <body>
@@ -70,7 +72,24 @@
 
   <footer>
     <p>© 2026 ScriptAndScale AI</p>
+    <p>
+      <a href="contact.html">Contact</a> • 
+      <a href="privacy.html">Privacy Policy</a> • 
+      <a href="terms.html">Terms of Service</a> • 
+      <a href="disclaimer.html">Disclaimer</a>
+    </p>
   </footer>
+
+  <!-- Live Chat Bot Embed -->
+  <script>
+    // Replace with your actual chat bot embed script if different
+    (function() {
+      var script = document.createElement('script');
+      script.src = 'YOUR_CHAT_BOT_EMBED_SCRIPT_URL'; // If hosted, put the URL here
+      script.async = true;
+      document.body.appendChild(script);
+    })();
+  </script>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -108,11 +127,6 @@
 
     agentSelect.addEventListener('change', updateFields);
     updateFields(); // initial
-
-    // Success message on submit (since POST redirects or shows script output)
-    document.getElementById('purchaseForm').addEventListener('submit', function() {
-      document.getElementById('successMsg').style.display = 'block';
-    });
   </script>
 </body>
 </html>
