@@ -4,57 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScriptAndScale AI - Premium AI Automation Agents</title>
-  <meta name="description" content="Lifetime ownership AI agents for X/Twitter automation. One-time payment, full resale rights."/>
+  <meta name="description" content="Lifetime ownership AI agents for social media automation. One-time payment, full resale rights."/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0f0f23, #1a1a3e); color: #fff; min-height: 100vh; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #667eea; min-height: 100vh; }
     .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
-    header { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index: 100; }
-    nav { display: flex; justify-content: center; gap: 2rem; padding: 1rem 0; }
-    nav a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; }
-    nav a:hover { color: #667eea; }
-    .hero { text-align: center; padding: 140px 0 100px; }
-    h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { font-size: 1.5rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; }
-    .buy-button { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 1.2rem 3rem; border: none; border-radius: 12px; font-size: 1.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 30px rgba(102,126,234,0.3); }
-    .buy-button:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(102,126,234,0.4); }
-    .learn-more { background: transparent; border: 1px solid #667eea; color: #667eea; padding: 1rem 2rem; border-radius: 12px; font-size: 1.3rem; cursor: pointer; transition: all 0.3s; margin: 0 1rem; }
-    .learn-more:hover { background: #667eea; color: #fff; }
+    header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid #667eea; }
+    nav { display: flex; justify-content: center; gap: 2.5rem; padding: 1rem 0; }
+    nav a { color: #667eea; text-decoration: none; font-weight: 600; transition: 0.3s; }
+    nav a:hover { color: #764ba2; }
+    .hero { text-align: center; padding: 140px 0 100px; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+    .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: 1.5rem; max-width: 800px; margin: 0 auto 3rem; }
     section { padding: 80px 0; }
-    .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem; }
-    .agent-card { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s; border: 1px solid rgba(102,126,234,0.2); }
-    .agent-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(102,126,234,0.2); }
-    .agent-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; }
-    .agent-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
-    .agent-card p { font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.9; }
-    .price { font-size: 1.8rem; font-weight: 700; margin: 1.5rem 0; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .coming-soon { color: #aaa; font-style: italic; margin: 1.5rem 0; }
-    .buttons { display: flex; justify-content: center; gap: 1rem; }
-    .bundles { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 4rem; }
-    .bundle-card { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); border-radius: 20px; padding: 2.5rem; text-align: center; border: 1px solid rgba(102,126,234,0.3); }
-    .bundle-card h3 { font-size: 2.2rem; margin-bottom: 1rem; }
-    .bundle-card ul { list-style: none; margin: 2rem 0; text-align: left; }
-    .bundle-card li { margin: 1rem 0; font-size: 1.1rem; }
-    .bundle-card .price { font-size: 2.5rem; margin: 2rem 0; }
-    #purchase { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 3rem; max-width: 800px; margin: 0 auto; }
-    #purchase h2 { font-size: 3rem; margin-bottom: 2rem; text-align: center; }
-    #purchase p { text-align: center; margin-bottom: 2rem; font-size: 1.2rem; }
-    #purchase form { display: grid; gap: 1rem; }
-    #purchase input, #purchase select, #purchase textarea { width: 100%; padding: 1rem; background: rgba(255,255,255,0.1); border: 1px solid #667eea; color: #fff; border-radius: 12px; font-size: 1rem; }
-    #purchase input::placeholder, #purchase textarea::placeholder { color: #aaa; }
-    #purchase button { margin-top: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); padding: 1.2rem; border: none; border-radius: 12px; font-size: 1.5rem; cursor: pointer; }
-    #successMsg { display: none; margin-top: 2rem; font-size: 1.5rem; color: #4ade80; text-align: center; }
-    footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 5rem; }
-    .social-logos { margin-top: 2rem; }
-    .social-logos a { color: #fff; margin: 0 1rem; font-size: 1.5rem; transition: 0.3s; }
-    .social-logos a:hover { color: #667eea; }
-    @media (max-width: 768px) { 
-      h1 { font-size: 3rem; }
-      .hero p { font-size: 1.2rem; }
-      .agents-grid { grid-template-columns: 1fr; }
-      .bundles { grid-template-columns: 1fr; }
+    h2 { text-align: center; font-size: 3rem; margin-bottom: 3rem; color: #764ba2; }
+    .agents-grid, .bundles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .card { background: rgba(102,126,234,0.05); border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s; border: 1px solid rgba(102,126,234,0.2); }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(102,126,234,0.2); }
+    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; }
+    .card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #764ba2; }
+    .card p { font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.9; }
+    .price { font-size: 2rem; font-weight: 700; margin: 1.5rem 0; color: #764ba2; }
+    .coming-soon { font-size: 1.3rem; color: #aaa; font-style: italic; margin: 1rem 0; }
+    .buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .btn-more { background: transparent; color: #667eea; border: 2px solid #667eea; padding: 0.8rem 2rem; border-radius: 12px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; }
+    .btn-more:hover { background: #667eea; color: #fff; }
+    .btn-buy { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 0.8rem 2rem; border: none; border-radius: 12px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; }
+    .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(102,126,234,0.3); }
+    .social-logos { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
+    .social-logos img { width: 30px; height: 30px; }
+    .details-section { background: rgba(102,126,234,0.05); border-radius: 20px; padding: 3rem; max-width: 800px; margin: 0 auto; }
+    .details-section form { display: grid; gap: 1rem; }
+    .details-section input, .details-section select, .details-section textarea { padding: 1rem; border: 1px solid #667eea; border-radius: 12px; background: #fff; color: #0f0f23; }
+    footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(102,126,234,0.1); }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3rem; }
       .buttons { flex-direction: column; }
     }
   </style>
@@ -65,208 +51,256 @@
       <a href="#home">Home</a>
       <a href="#agents">Agents</a>
       <a href="#bundles">Bundles</a>
-      <a href="#purchase">Purchase</a>
     </nav>
   </header>
 
   <section class="hero" id="home">
     <div class="container">
       <h1>ScriptAndScale AI</h1>
-      <p>Premium AI automation agents for X (Twitter). Lifetime ownership. Full resale rights. One-time payment.</p>
-      <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Purchase Your Agent Now</button>
+      <p>Premium AI automation agents for social media. Lifetime ownership. Full resale rights. One-time payment.</p>
     </div>
   </section>
 
   <section class="container" id="agents">
-    <h2 style="text-align:center;font-size:3rem;margin-bottom:3rem">Our AI Agents</h2>
+    <h2>Our AI Agents</h2>
     <div class="agents-grid">
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Social+Content" alt="Social Content Generator">
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Social+Content+Generator" alt="Social Content Generator">
         <h3>Social Content Generator</h3>
-        <p>Daily fresh, on-brand nostalgia posts. Live on @ctrlaltrewind.</p>
-        <p class="coming-soon">Included in bundles</p>
-        <div class="buttons">
-          <a href="social-content-generator.html" class="learn-more">Learn More</a>
-        </div>
-      </div>
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Reply+Bot" alt="Reply Bot">
-        <h3>Reply Bot</h3>
-        <p>Gen X voice, catches all direct replies + mentions. Live.</p>
-        <p class="coming-soon">Included in bundles</p>
-        <div class="buttons">
-          <a href="reply-bot.html" class="learn-more">Learn More</a>
-        </div>
-      </div>
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Promotion+Bot" alt="Promotion Bot">
-        <h3>Promotion Bot</h3>
-        <p>Real traffic-driving version ready to build.</p>
-        <p class="coming-soon">Coming Soon</p>
-        <div class="buttons">
-          <a href="promotion-bot.html" class="learn-more">Learn More</a>
-        </div>
-      </div>
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Custom+Builder" alt="Custom Agent Builder">
-        <h3>Custom Agent Builder</h3>
-        <p>Ready for backend integration.</p>
-        <div class="buttons">
-          <a href="custom-agent-builder.html" class="learn-more">Learn More</a>
-        </div>
-      </div>
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Channel+Opt" alt="Channel Optimization Agent">
-        <h3>Channel Optimization Agent</h3>
-        <p>Resale code v1.1 saved (neutral, customer-configurable). Page live with "Coming Soon".</p>
-        <p class="price">$4,997</p>
-        <div class="buttons">
-          <a href="channel-optimization.html" class="learn-more">Learn More</a>
-          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
-        </div>
-      </div>
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Video+Content" alt="Video Content Automation Agent">
-        <h3>Video Content Automation Agent</h3>
-        <p>Coming Soon page live.</p>
-        <p class="price">$14,997</p>
-        <div class="buttons">
-          <a href="video-content-automation.html" class="learn-more">Learn More</a>
-          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
-        </div>
-      </div>
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Supercuts" alt="Supercuts Agent">
-        <h3>Supercuts Agent</h3>
-        <p>Coming Soon page live.</p>
-        <p class="price">$7,997</p>
-        <div class="buttons">
-          <a href="supercuts-agent.html" class="learn-more">Learn More</a>
-          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
-        </div>
-      </div>
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Chat+Bot" alt="Chat Bot">
-        <h3>Chat Bot</h3>
-        <p>Live on site.</p>
-        <p class="coming-soon">Included in bundles</p>
-        <div class="buttons">
-          <a href="chat-bot.html" class="learn-more">Learn More</a>
-        </div>
-      </div>
-      <div class="agent-card">
-        <img src="https://via.placeholder.com/300x200/667eea/fff?text=Written+Content" alt="Written Content Agent">
-        <h3>Written Content Agent</h3>
-        <p>Coming Soon page live.</p>
+        <p>Daily fresh, on-brand posts. Live test on @ctrlaltrewind.</p>
         <p class="price">$9,997</p>
         <div class="buttons">
-          <a href="written-content-agent.html" class="learn-more">Learn More</a>
-          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Now</button>
+          <button class="btn-more" onclick="location.href='social-content-generator.html'">Learn More</button>
+          <button class="btn-buy" onclick="scrollToDetails('Social Content Generator - $9,997')">Buy Now</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Reply+Bot" alt="Reply Bot">
+        <h3>Reply Bot</h3>
+        <p>Gen X voice, catches replies + mentions. Live.</p>
+        <p class="price">$4,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='reply-bot.html'">Learn More</button>
+          <button class="btn-buy" onclick="scrollToDetails('Reply Bot - $4,997')">Buy Now</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Promotion+Bot" alt="Promotion Bot">
+        <h3>Promotion Bot</h3>
+        <p>Real traffic-driving promotion agent.</p>
+        <p class="price">$4,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='promotion-bot.html'">Learn More</button>
+          <button class="btn-buy" onclick="scrollToDetails('Promotion Bot - $4,997')">Buy Now</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Custom+Agent+Builder" alt="Custom Agent Builder">
+        <h3>Custom Agent Builder</h3>
+        <p>Create fully custom automation agents.</p>
+        <p class="price">$4,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='custom-agent-builder.html'">Learn More</button>
+          <button class="btn-buy" onclick="scrollToDetails('Custom Agent Builder - $4,997')">Buy Now</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Channel+Optimization" alt="Channel Optimization Agent">
+        <h3>Channel Optimization Agent</h3>
+        <p>Customer-configurable optimization agent.</p>
+        <p class="price">$4,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='channel-optimization-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Video+Content+Automation" alt="Video Content Automation Agent">
+        <h3>Video Content Automation Agent</h3>
+        <p>Automated video content creation.</p>
+        <p class="price">$14,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='video-content-automation-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Supercuts+Agent" alt="Supercuts Agent">
+        <h3>Supercuts Agent</h3>
+        <p>Automated supercut video creation.</p>
+        <p class="price">$7,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='supercuts-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Chat+Bot" alt="Chat Bot">
+        <h3>Chat Bot</h3>
+        <p>Live site chat automation.</p>
+        <p class="price">$2,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='chat-bot.html'">Learn More</button>
+          <button class="btn-buy" onclick="scrollToDetails('Chat Bot - $2,997')">Buy Now</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200/667eea/fff?text=Written+Content+Agent" alt="Written Content Agent">
+        <h3>Written Content Agent</h3>
+        <p>Automated written content generation.</p>
+        <p class="price">$9,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='written-content-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
         </div>
       </div>
     </div>
   </section>
 
   <section class="container" id="bundles">
-    <h2 style="text-align:center;font-size:3rem;margin-bottom:3rem">Bundles</h2>
-    <div class="bundles">
-      <div class="bundle-card">
+    <h2>Our Bundles</h2>
+    <div class="bundles-grid">
+      <div class="card">
         <h3>Content Creator Bundle</h3>
+        <p>Includes: Social Content Generator, Reply Bot, Promotion Bot, Chat Bot</p>
         <p class="price">$19,997</p>
-        <ul>
-          <li>Social Content Generator</li>
-          <li>Reply Bot</li>
-          <li>Promotion Bot</li>
-          <li>Chat Bot</li>
-        </ul>
         <div class="buttons">
-          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Bundle</button>
+          <button class="btn-buy" onclick="scrollToDetails('Content Creator Bundle - $19,997')">Buy Now</button>
         </div>
       </div>
-      <div class="bundle-card">
+      <div class="card">
         <h3>Video Creator Bundle</h3>
+        <p>Includes: Video Content Automation, Supercuts Agent, Promotion Bot, Chat Bot</p>
         <p class="price">$24,997</p>
-        <ul>
-          <li>Video Content Automation Agent</li>
-          <li>Supercuts Agent</li>
-          <li>Promotion Bot</li>
-          <li>Chat Bot</li>
-        </ul>
         <div class="buttons">
-          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Bundle</button>
+          <button class="btn-buy" onclick="scrollToDetails('Video Creator Bundle - $24,997')">Buy Now</button>
         </div>
       </div>
-      <div class="bundle-card">
+      <div class="card">
         <h3>Engagement Boost Add-On</h3>
+        <p>Includes: Reply Bot, Chat Bot</p>
         <p class="price">$6,997</p>
-        <ul>
-          <li>Reply Bot</li>
-          <li>Chat Bot</li>
-        </ul>
         <div class="buttons">
-          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Add-On</button>
+          <button class="btn-buy" onclick="scrollToDetails('Engagement Boost Add-On - $6,997')">Buy Now</button>
         </div>
       </div>
-      <div class="bundle-card">
+      <div class="card">
         <h3>Flagship Everything Bundle</h3>
-        <p class="price">$44,997</p>
         <p>All current + future agents. Lifetime.</p>
+        <p class="price">$44,997</p>
         <div class="buttons">
-          <button class="buy-button" onclick="document.getElementById('purchase').scrollIntoView({behavior: 'smooth'})">Buy Everything</button>
+          <button class="btn-buy" onclick="scrollToDetails('Flagship Everything Bundle - $44,997')">Buy Now</button>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="container" id="purchase">
-    <div id="purchase">
-      <h2>Purchase Your AI Agent</h2>
-      <p>Most delivered within 1 business day. Complex requests reviewed in 2-3 days.</p>
+  <section class="container" id="details">
+    <div class="details-section">
+      <h2>Provide Your Details</h2>
+      <p style="text-align:center;margin-bottom:2rem;">Selected product will appear below. Fill in all info needed for your custom agent build.</p>
       <form id="purchaseForm">
-        <select name="agent" required>
-          <option value="">Select Agent or Bundle</option>
-          <option value="Channel Optimization Agent">$4,997 - Channel Optimization Agent</option>
-          <option value="Video Content Automation Agent">$14,997 - Video Content Automation Agent</option>
-          <option value="Supercuts Agent">$7,997 - Supercuts Agent</option>
-          <option value="Written Content Agent">$9,997 - Written Content Agent</option>
-          <option value="Content Creator Bundle">$19,997 - Content Creator Bundle</option>
-          <option value="Video Creator Bundle">$24,997 - Video Creator Bundle</option>
-          <option value="Engagement Boost Add-On">$6,997 - Engagement Boost Add-On</option>
-          <option value="Flagship Everything Bundle">$44,997 - Flagship Everything Bundle</option>
+        <select id="productSelect" required>
+          <option value="">Select Product</option>
+          <option>Social Content Generator - $9,997</option>
+          <option>Reply Bot - $4,997</option>
+          <option>Promotion Bot - $4,997</option>
+          <option>Custom Agent Builder - $4,997</option>
+          <option>Chat Bot - $2,997</option>
+          <option>Content Creator Bundle - $19,997</option>
+          <option>Video Creator Bundle - $24,997</option>
+          <option>Engagement Boost Add-On - $6,997</option>
+          <option>Flagship Everything Bundle - $44,997</option>
         </select>
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email (for delivery)" required>
-        <textarea name="note" placeholder="Customization specs or special requests (keep standard for auto-processing)" rows="5"></textarea>
-        <button type="submit">Submit & Proceed</button>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="text" placeholder="X/Twitter Handle">
+        <input type="text" placeholder="Facebook Page URL">
+        <input type="text" placeholder="Instagram Handle">
+        <input type="text" placeholder="YouTube Channel URL">
+        <input type="text" placeholder="TikTok Username">
+        <input type="text" placeholder="LinkedIn Profile URL">
+        <input type="text" placeholder="Reddit Username">
+        <textarea placeholder="Brand Voice / Niche Description" rows="4" required></textarea>
+        <textarea placeholder="Detailed Explanation of Needs / Customizations" rows="6" required></textarea>
+        <button type="submit" class="btn-buy" style="width:100%;padding:1.2rem;font-size:1.3rem;">Submit & Proceed</button>
       </form>
-      <p id="successMsg" style="display: none;">Thank you for your business. Your purchases will be emailed to the address you provided within 1 business day.</p>
+      <p id="successMsg" style="display:none;color:#4ade80;text-align:center;margin-top:2rem;font-size:1.5rem;">Submitted! We'll review and process your order.</p>
     </div>
   </section>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2026 ScriptAndScale AI. All rights reserved.</p>
-      <div class="social-logos">
-        <a href="https://twitter.com/ctrlaltrewind" class="fa-brands fa-x-twitter"></a>
-        <a href="https://facebook.com/scriptandscaleai" class="fa-brands fa-facebook"></a>
-        <a href="https://instagram.com/scriptandscaleai" class="fa-brands fa-instagram"></a>
-      </div>
+    <p>© 2026 ScriptAndScale AI</p>
+    <div class="social-logos" style="margin-top:1rem;">
+      <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+      <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+      <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
     </div>
   </footer>
 
   <script>
+    function scrollToDetails(product) {
+      document.getElementById('productSelect').value = product;
+      document.getElementById('details').scrollIntoView({behavior: 'smooth'});
+    }
+    // Placeholder for form submit - replace with your Apps Script web app URL
     document.getElementById('purchaseForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const formData = new FormData(this);
-      fetch('YOUR_APPS_SCRIPT_WEBAPP_URL_HERE/doPost', {
-        method: 'POST',
-        body: formData
-      }).then(() => {
-        document.getElementById('successMsg').style.display = 'block';
-        this.reset();
-      }).catch(() => {
-        alert('Error - email michaeltleatherwood@gmail.com');
-      });
+      // Here post to Apps Script for complexity check / PayPal redirect
+      document.getElementById('successMsg').style.display = 'block';
     });
   </script>
 </body>
