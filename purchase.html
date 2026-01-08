@@ -8,35 +8,52 @@
     body { font-family: Arial, sans-serif; background: #f0f4f8; color: #333; margin: 0; padding: 20px; }
     .container { max-width: 800px; margin: auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
     h1 { text-align: center; color: #4a6fa5; }
-    .agent-select { margin: 20px 0; text-align: center; }
-    .buy-button { display: block; width: 300px; margin: 30px auto; padding: 15px; background: #4a6fa5; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-size: 20px; }
-    .buy-button:hover { background: #3a5a8a; }
-    .disclaimer { text-align: center; font-size: 14px; color: #666; margin-top: 40px; }
-    .no-refund { text-align: center; font-size: 16px; color: #d32f2f; margin: 20px 0; font-weight: bold; }
+    label { display: block; margin: 15px 0 5px; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+    textarea { height: 150px; resize: vertical; }
+    button { background: #4a6fa5; color: white; padding: 12px 24px; border: none; border-radius: 6px; font-size: 18px; cursor: pointer; margin-top: 20px; }
+    button:hover { background: #3a5a8a; }
+    .result { margin-top: 30px; text-align: center; font-size: 18px; }
+    .price { font-size: 24px; font-weight: bold; color: #4a6fa5; margin: 20px 0; }
+    .buy-button { display: inline-block; margin-top: 20px; }
+    .policy { text-align: center; font-size: 15px; color: #555; margin: 30px 0; line-height: 1.5; }
+    .policy a { color: #4a6fa5; text-decoration: underline; }
     footer { text-align: center; margin-top: 50px; font-size: 12px; color: #999; }
     footer a { color: #4a6fa5; text-decoration: none; margin: 0 10px; }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Select Your AI Agent</h1>
-    <div class="agent-select">
-      <label for="agent">Choose an agent:</label>
-      <select id="agent" onchange="updateBuyLink()">
-        <option value="">-- Select Agent --</option>
-        <option value="Social Content Generator">Social Content Generator ($9,997)</option>
-        <option value="Chat Bot">Chat Bot ($2,997)</option>
-      </select>
+    <h1>Purchase Your AI Agent</h1>
+
+    <label for="agent">Select Agent</label>
+    <select id="agent" onchange="showForm()">
+      <option value="">-- Choose an Agent --</option>
+      <option value="Social Content Generator">Social Content Generator ($9,997)</option>
+      <option value="Chat Bot">Chat Bot ($2,997)</option>
+    </select>
+
+    <div id="customForm" class="hidden">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email (for delivery)</label>
+      <input type="email" id="email" required>
+
+      <label for="details">Describe your needs / customization</label>
+      <textarea id="details" placeholder="e.g., Niche, tone, specific features, platforms, etc." required></textarea>
+
+      <button onclick="confirmRequest()">Confirm Request & Proceed to Payment</button>
     </div>
 
-    <div class="no-refund">
-      All sales are final — no refunds or money-back guarantees. 
-      <a href="terms.html" style="color: #d32f2f; text-decoration: underline;">View Terms of Service</a>
+    <div id="result" class="result hidden"></div>
+
+    <div class="policy">
+      All sales are final with no refunds. By purchasing, you agree to our 
+      <a href="terms.html">Terms of Service</a>, <a href="privacy.html">Privacy Policy</a>, and <a href="disclaimer.html">Disclaimer</a>.
+      Your agent will be customized and delivered via email within 1 business day.
     </div>
-
-    <a id="buyLink" class="buy-button" href="#" style="display: none;">Buy Now</a>
-
-    <p class="disclaimer">After payment, your customized agent package will be delivered via email within 1 business day.</p>
   </div>
 
   <footer>
@@ -48,28 +65,65 @@
   </footer>
 
   <script>
-    function updateBuyLink() {
+    function showForm() {
       var agent = document.getElementById('agent').value;
-      var buyLink = document.getElementById('buyLink');
-      if (agent === 'Social Content Generator') {
-        buyLink.href = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=michaeltleatherwood@gmail.com&lc=US&item_name=Social%20Content%20Generator&amount=9997.00&currency_code=USD&button_subtype=services&no_note=0&bn=PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest&custom=Social%20Content%20Generator';
-        buyLink.textContent = 'Buy Social Content Generator ($9,997)';
-        buyLink.style.display = 'block';
-      } else if (agent === 'Chat Bot') {
-        buyLink.href = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=michaeltleatherwood@gmail.com&lc=US&item_name=Chat%20Bot&amount=2997.00&currency_code=USD&button_subtype=services&no_note=0&bn=PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest&custom=Chat%20Bot';
-        buyLink.textContent = 'Buy Chat Bot ($2,997)';
-        buyLink.style.display = 'block';
+      var form = document.getElementById('customForm');
+      var result = document.getElementById('result');
+      result.classList.add('hidden');
+      if (agent) {
+        form.classList.remove('hidden');
       } else {
-        buyLink.style.display = 'none';
+        form.classList.add('hidden');
       }
     }
 
-    // Pre-select from query param if coming from agent page
+    function confirmRequest() {
+      var agent = document.getElementById('agent').value;
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var details = document.getElementById('details').value.trim();
+
+      if (!name || !email || !details) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Simple feasibility check (can expand later)
+      var lowerDetails = details.toLowerCase();
+      var blocked = ['illegal', 'hate', 'scam', 'fraud', 'spam'];
+      for (var word of blocked) {
+        if (lowerDetails.includes(word)) {
+          document.getElementById('result').innerHTML = '<p style="color:red;">Request cannot be fulfilled due to content policy. Please <a href="contact.html">contact us</a> for clarification.</p>';
+          document.getElementById('result').classList.remove('hidden');
+          return;
+        }
+      }
+
+      var price = agent === 'Social Content Generator' ? '9997.00' : '2997.00';
+      var itemName = encodeURIComponent(agent);
+      var customParam = encodeURIComponent(agent + ' | Name: ' + name + ' | Email: ' + email + ' | Details: ' + details);
+
+      var paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick' +
+        '&business=michaeltleatherwood@gmail.com' +
+        '&item_name=' + itemName +
+        '&amount=' + price +
+        '&currency_code=USD' +
+        '&custom=' + customParam +
+        '&button_subtype=services&no_note=0&bn=PP-BuyNowBF';
+
+      document.getElementById('result').innerHTML = 
+        '<p>Your request is confirmed — we can build this agent!</p>' +
+        '<div class="price">Total: $' + price + '</div>' +
+        '<a href="' + paypalUrl + '" class="buy-button"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" alt="Buy Now"></a>';
+      document.getElementById('result').classList.remove('hidden');
+    }
+
+    // Pre-select from query param
     const urlParams = new URLSearchParams(window.location.search);
     const agentParam = urlParams.get('agent');
     if (agentParam) {
       document.getElementById('agent').value = agentParam;
-      updateBuyLink();
+      showForm();
     }
   </script>
 </body>
