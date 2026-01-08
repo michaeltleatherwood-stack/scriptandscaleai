@@ -14,7 +14,7 @@
     button { background: #4a6fa5; color: white; padding: 12px 24px; border: none; border-radius: 6px; font-size: 18px; cursor: pointer; margin-top: 20px; }
     button:hover { background: #3a5a8a; }
     .result { margin-top: 30px; text-align: center; font-size: 18px; }
-    .price { font-size: 24px; font-weight: bold; color: #4a6fa5; margin: 20px 0; }
+    .price { font-size: 28px; font-weight: bold; color: #4a6fa5; margin: 20px 0; }
     .buy-button { display: inline-block; margin-top: 20px; }
     .policy { text-align: center; font-size: 15px; color: #555; margin: 30px 0; line-height: 1.5; }
     .policy a { color: #4a6fa5; text-decoration: underline; }
@@ -41,8 +41,17 @@
       <label for="email">Email (for delivery)</label>
       <input type="email" id="email" required>
 
-      <label for="details">Describe your needs / customization</label>
-      <textarea id="details" placeholder="e.g., Niche, tone, specific features, platforms, etc." required></textarea>
+      <label for="niche">Niche / Topic</label>
+      <input type="text" id="niche" placeholder="e.g., fitness, real estate, crypto" required>
+
+      <label for="tone">Desired Tone</label>
+      <input type="text" id="tone" placeholder="e.g., professional, witty, motivational, friendly" required>
+
+      <label for="platforms">Target Platforms</label>
+      <input type="text" id="platforms" placeholder="e.g., X/Twitter, LinkedIn, Instagram, Facebook" required>
+
+      <label for="details">Additional Details / Specific Features</label>
+      <textarea id="details" placeholder="Any special requirements, examples, or features you'd like included..." required></textarea>
 
       <button onclick="confirmRequest()">Confirm Request & Proceed to Payment</button>
     </div>
@@ -50,9 +59,9 @@
     <div id="result" class="result hidden"></div>
 
     <div class="policy">
-      All sales are final with no refunds. By purchasing, you agree to our 
+      All sales are final with no refunds or money-back guarantees. By proceeding, you agree to our 
       <a href="terms.html">Terms of Service</a>, <a href="privacy.html">Privacy Policy</a>, and <a href="disclaimer.html">Disclaimer</a>.
-      Your agent will be customized and delivered via email within 1 business day.
+      Your customized agent will be delivered via email within 1 business day of payment.
     </div>
   </div>
 
@@ -81,19 +90,22 @@
       var agent = document.getElementById('agent').value;
       var name = document.getElementById('name').value.trim();
       var email = document.getElementById('email').value.trim();
+      var niche = document.getElementById('niche').value.trim();
+      var tone = document.getElementById('tone').value.trim();
+      var platforms = document.getElementById('platforms').value.trim();
       var details = document.getElementById('details').value.trim();
 
-      if (!name || !email || !details) {
+      if (!name || !email || !niche || !tone || !platforms || !details) {
         alert('Please fill in all fields.');
         return;
       }
 
-      // Simple feasibility check (can expand later)
-      var lowerDetails = details.toLowerCase();
-      var blocked = ['illegal', 'hate', 'scam', 'fraud', 'spam'];
+      // Basic content policy check
+      var allText = (niche + tone + platforms + details).toLowerCase();
+      var blocked = ['illegal', 'hate', 'scam', 'fraud', 'spam', 'adult'];
       for (var word of blocked) {
-        if (lowerDetails.includes(word)) {
-          document.getElementById('result').innerHTML = '<p style="color:red;">Request cannot be fulfilled due to content policy. Please <a href="contact.html">contact us</a> for clarification.</p>';
+        if (allText.includes(word)) {
+          document.getElementById('result').innerHTML = '<p style="color:#d32f2f;">We cannot fulfill requests involving restricted content. Please <a href="contact.html">contact us</a> if you have questions.</p>';
           document.getElementById('result').classList.remove('hidden');
           return;
         }
@@ -101,7 +113,11 @@
 
       var price = agent === 'Social Content Generator' ? '9997.00' : '2997.00';
       var itemName = encodeURIComponent(agent);
-      var customParam = encodeURIComponent(agent + ' | Name: ' + name + ' | Email: ' + email + ' | Details: ' + details);
+      var customParam = encodeURIComponent(
+        agent + ' | Name: ' + name + ' | Email: ' + email + 
+        ' | Niche: ' + niche + ' | Tone: ' + tone + 
+        ' | Platforms: ' + platforms + ' | Details: ' + details
+      );
 
       var paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick' +
         '&business=michaeltleatherwood@gmail.com' +
@@ -112,13 +128,13 @@
         '&button_subtype=services&no_note=0&bn=PP-BuyNowBF';
 
       document.getElementById('result').innerHTML = 
-        '<p>Your request is confirmed — we can build this agent!</p>' +
+        '<p><strong>Your request is confirmed — we can build this agent exactly as described!</strong></p>' +
         '<div class="price">Total: $' + price + '</div>' +
-        '<a href="' + paypalUrl + '" class="buy-button"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" alt="Buy Now"></a>';
+        '<a href="' + paypalUrl + '" class="buy-button"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" alt="Buy Now with PayPal"></a>';
       document.getElementById('result').classList.remove('hidden');
     }
 
-    // Pre-select from query param
+    // Pre-select agent from query param
     const urlParams = new URLSearchParams(window.location.search);
     const agentParam = urlParams.get('agent');
     if (agentParam) {
