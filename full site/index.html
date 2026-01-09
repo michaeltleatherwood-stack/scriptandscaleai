@@ -295,9 +295,9 @@
               box-shadow: 0 4px 16px rgba(102,126,234,0.35);
           }
 
-          #trail3 { width: 17px; height: 17px; } /* ~1/4 size of main */
-          #trail2 { width: 34px; height: 34px; } /* ~1/2 size of main */
-          #trail1 { width: 68px; height: 68px; } /* same as main for progression */
+          #trail3 { width: 17px; height: 17px; } /* 1/4 of third */
+          #trail2 { width: 34px; height: 34px; } /* 1/2 of third */
+          #trail1 { width: 48px; height: 48px; } /* third, smaller than main 68px */
 
           #ssai-chat-window {
               position: absolute;
@@ -439,6 +439,10 @@
                   bottom: 80px;
                   right: 5vw;
               }
+              #ssai-main-bubble { width: 60px; height: 60px; font-size: 17px; }
+              #trail1 { width: 42px; height: 42px; } /* scaled down for mobile */
+              #trail2 { width: 30px; height: 30px; }
+              #trail3 { width: 15px; height: 15px; }
           }
       `;
       document.head.appendChild(style);
