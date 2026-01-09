@@ -290,12 +290,14 @@
           }
 
           .ssai-trail-bubble {
-              width: 28px;
-              height: 28px;
-              background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
               border-radius: 50%;
+              background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
               box-shadow: 0 4px 16px rgba(102,126,234,0.35);
           }
+
+          #trail3 { width: 17px; height: 17px; } /* ~1/4 size of main */
+          #trail2 { width: 34px; height: 34px; } /* ~1/2 size of main */
+          #trail1 { width: 68px; height: 68px; } /* same as main for progression */
 
           #ssai-chat-window {
               position: absolute;
