@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScriptAndScale AI - Premium AI Automation Agents</title>
-  <meta name="description" content="Lifetime ownership AI agents for social media automation. One-time payment, full resale rights."/>
+  <meta name="description" content="Lifetime ownership AI agents for social media automation. One-time payment. Full resale rights included. You may resell the software, but you are responsible for your own compliance with platform and legal rules."/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -34,6 +34,9 @@
     .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(102,126,234,0.3); }
     .social-logos { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; }
     .social-logos img { width: 30px; height: 30px; }
+    .delivery-note { font-weight:600; color:#764ba2; margin:1rem 0; text-align:center; font-size:1.1rem; }
+    .resale-disclaimer { font-size:0.95rem; color:#4b5563; margin-top:1rem; font-style:italic; }
+    .warning-note { color:#dc2626; font-weight:500; margin-top:1rem; font-size:1rem; }
     footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(102,126,234,0.1); }
     footer a { color: #aaa; margin: 0 1rem; text-decoration: none; font-size: 0.9rem; }
     footer a:hover { color: #667eea; }
@@ -57,7 +60,7 @@
   <section class="hero" id="home">
     <div class="container">
       <h1>ScriptAndScale AI</h1>
-      <p>Premium AI automation agents for social media. Lifetime ownership. Full resale rights. One-time payment.</p>
+      <p>Premium AI automation agents for social media. Lifetime ownership. Full resale rights included. You may resell the software, but you are responsible for your own compliance with platform and legal rules. One-time payment.</p>
     </div>
   </section>
   <section class="container" id="agents">
@@ -67,10 +70,12 @@
         <h3>Social Content Generator</h3>
         <p>Daily fresh, on-brand posts automated across platforms.</p>
         <p class="price">$9,997</p>
+        <p class="delivery-note">Delivered by email within 1 business day after purchase.</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='social-content-generator.html'">Learn More</button>
           <button class="btn-buy" onclick="location.href='purchase.html?agent=social-content'">Buy Now</button>
         </div>
+        <p class="resale-disclaimer">Full resale rights included. You may resell the software, but you are responsible for your own compliance with platform and legal rules.</p>
         <div class="social-logos">
           <img src="X icon.png" alt="X">
           <img src="facebook icon.png" alt="Facebook">
@@ -101,6 +106,7 @@
         <p>Real traffic-driving promotion agent.</p>
         <p class="price">$4,997</p>
         <p class="coming-soon">Coming Soon</p>
+        <p class="warning-note">Important: New X/Twitter accounts must be warmed up manually (following, liking, posting manually) before full automation to avoid restrictions.</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='promotion-bot.html'">Learn More</button>
         </div>
@@ -122,7 +128,7 @@
       </div>
       <div class="card">
         <h3>Channel Optimization Agent</h3>
-        <p>Customer-configurable optimization agent.</p>
+        <p>The Channel Optimization Agent is custom-configured by ScriptAndScale AI specifically for your niche, platforms, and goals — delivering tailored optimization recommendations.</p>
         <p class="price">$4,997</p>
         <p class="coming-soon">Coming Soon</p>
         <div class="buttons">
@@ -170,10 +176,12 @@
         <h3>Chat Bot</h3>
         <p>Live site and platform chat automation.</p>
         <p class="price">$2,997</p>
+        <p class="delivery-note">Delivered by email within 1 business day after purchase.</p>
         <div class="buttons">
           <button class="btn-more" onclick="location.href='chat-bot.html'">Learn More</button>
           <button class="btn-buy" onclick="location.href='purchase.html?agent=chat-bot'">Buy Now</button>
         </div>
+        <p class="resale-disclaimer">Full resale rights included. You may resell the software, but you are responsible for your own compliance with platform and legal rules.</p>
       </div>
       <div class="card">
         <h3>Written Content Agent</h3>
@@ -247,18 +255,19 @@
   (function() {
       // ==================== CONFIG ====================
       const ENDPOINT = "https://script.google.com/macros/s/AKfycbx9LZcf0JH_Jz0RmdC9TzsEhmf29txoIPCajaob1sugBgpbO23UKflPXIk3rgKSfAwR/exec";
-      const BRAND_COLOR = "#667eea";      // main blue
-      const BRAND_COLOR_DARK = "#764ba2"; // purple accent
+      const BRAND_COLOR = "#667eea";
+      const BRAND_COLOR_DARK = "#764ba2";
       const TEXT_COLOR = "#1f2937";
       const BG_COLOR = "#ffffff";
-      const BUBBLE_SIZE = "64px";
+      const BUBBLE_WIDTH = "120px";
+      const BUBBLE_HEIGHT = "48px";
 
       // ==================== CREATE ELEMENTS ====================
       const container = document.createElement('div');
       container.id = 'ssai-chat-container';
       document.body.appendChild(container);
 
-      // CSS Injection
+      // CSS Injection (only updated launcher UI, rest unchanged)
       const style = document.createElement('style');
       style.textContent = `
           #ssai-chat-container {
@@ -269,31 +278,51 @@
               font-family: 'Inter', system-ui, -apple-system, sans-serif;
           }
 
-          #ssai-chat-bubble {
-              width: ${BUBBLE_SIZE};
-              height: ${BUBBLE_SIZE};
-              border-radius: 50%;
+          /* New Thought Bubble Launcher */
+          #ssai-chat-launcher {
+              display: flex;
+              align-items: center;
+              position: relative;
+              cursor: pointer;
+          }
+
+          #ssai-main-bubble {
+              width: ${BUBBLE_WIDTH};
+              height: ${BUBBLE_HEIGHT};
               background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
               color: white;
+              border-radius: 24px;
               display: flex;
               align-items: center;
               justify-content: center;
-              font-size: 24px;
-              font-weight: bold;
-              cursor: pointer;
+              font-weight: 600;
+              font-size: 18px;
               box-shadow: 0 8px 32px rgba(102,126,234,0.4);
               transition: all 0.3s ease;
-              user-select: none;
           }
 
-          #ssai-chat-bubble:hover {
-              transform: scale(1.08);
+          #ssai-main-bubble:hover {
+              transform: scale(1.05);
               box-shadow: 0 12px 48px rgba(102,126,234,0.5);
           }
 
+          .ssai-trail-bubble {
+              position: absolute;
+              background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
+              border-radius: 50%;
+              opacity: 0.8;
+              box-shadow: 0 4px 16px rgba(102,126,234,0.3);
+              transition: all 0.4s ease;
+          }
+
+          #trail1 { width: 24px; height: 24px; right: ${BUBBLE_WIDTH}; top: 12px; }
+          #trail2 { width: 18px; height: 18px; right: calc(${BUBBLE_WIDTH} + 12px); top: 4px; opacity: 0.6; }
+          #trail3 { width: 12px; height: 12px; right: calc(${BUBBLE_WIDTH} + 28px); top: 18px; opacity: 0.4; }
+
+          /* Rest of chat window CSS remains unchanged */
           #ssai-chat-window {
               position: absolute;
-              bottom: calc(${BUBBLE_SIZE} + 16px);
+              bottom: calc(${BUBBLE_HEIGHT} + 16px);
               right: 0;
               width: 360px;
               height: 520px;
@@ -431,13 +460,19 @@
                   bottom: 80px;
                   right: 5vw;
               }
+              #ssai-main-bubble { font-size: 16px; }
           }
       `;
       document.head.appendChild(style);
 
-      // ==================== HTML STRUCTURE ====================
+      // ==================== HTML STRUCTURE (updated launcher only) ====================
       container.innerHTML = `
-          <div id="ssai-chat-bubble">AI</div>
+          <div id="ssai-chat-launcher">
+              <div id="ssai-main-bubble">Chat</div>
+              <div class="ssai-trail-bubble" id="trail1"></div>
+              <div class="ssai-trail-bubble" id="trail2"></div>
+              <div class="ssai-trail-bubble" id="trail3"></div>
+          </div>
           <div id="ssai-chat-window">
               <div id="ssai-chat-header">
                   <span>ScriptAndScale AI Assistant</span>
@@ -451,22 +486,22 @@
           </div>
       `;
 
-      // ==================== DOM REFERENCES ====================
-      const bubble = document.getElementById('ssai-chat-bubble');
+      // ==================== DOM REFERENCES (updated for new launcher) ====================
+      const launcher = document.getElementById('ssai-chat-launcher');
       const windowEl = document.getElementById('ssai-chat-window');
       const closeBtn = document.getElementById('ssai-chat-close');
       const messages = document.getElementById('ssai-chat-messages');
       const input = document.getElementById('ssai-chat-input');
       const sendBtn = document.getElementById('ssai-chat-send');
 
-      // ==================== STATE ====================
+      // ==================== STATE (unchanged) ====================
       let sessionId = localStorage.getItem('ssai_chat_session_id');
       if (!sessionId) {
           sessionId = 'ssai_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
           localStorage.setItem('ssai_chat_session_id', sessionId);
       }
 
-      // ==================== HELPERS ====================
+      // ==================== HELPERS (unchanged) ====================
       function addMessage(text, isUser = false) {
           const msg = document.createElement('div');
           msg.className = `ssai-message ${isUser ? 'ssai-user' : 'ssai-bot'}`;
@@ -541,8 +576,8 @@
           }
       }
 
-      // ==================== EVENT LISTENERS ====================
-      bubble.addEventListener('click', () => {
+      // ==================== EVENT LISTENERS (updated for launcher) ====================
+      launcher.addEventListener('click', () => {
           windowEl.style.display = windowEl.style.display === 'flex' ? 'none' : 'flex';
           if (windowEl.style.display === 'flex') {
               input.focus();
@@ -561,16 +596,6 @@
               sendMessage();
           }
       });
-
-      // ==================== INITIAL GREETING (optional) ====================
-      // Uncomment if you want a welcome message on first open
-      /*
-      if (!localStorage.getItem('ssai_chat_welcomed')) {
-          bubble.click();
-          addMessage("Hi! I'm the ScriptAndScale AI Assistant. How can I help you today?", false);
-          localStorage.setItem('ssai_chat_welcomed', 'true');
-      }
-      */
 
   })();
   </script>
