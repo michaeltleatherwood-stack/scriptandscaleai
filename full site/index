@@ -1,239 +1,534 @@
-// ScriptAndScale AI Backend v3.5.0 - January 10, 2026
-// • Proper JSON parsing for chat (Content-Type: application/json)
-// • Skips IPN validation when action === "chat"
-// • doGet kept for legacy/fallback, but chat now primarily via doPost JSON
-// • PayPal IPN handling unchanged
-
-const LOG_SPREADSHEET_NAME = 'ScriptAndScale Orders Log';
-const LOG_SHEET_NAME = 'Log';
-const QUEUE_SHEET_NAME = 'Delivery Queue';
-const PROPERTY_KEY = 'LOG_SPREADSHEET_ID';
-
-function doGet(e) {
-  // Legacy/fallback support (query string parameters)
-  return handleRequest(e.parameter, null);
-}
-
-function doPost(e) {
-  // Determine content type and parse accordingly
-  let contentType = e.postData ? e.postData.type : '';
-  let data = {};
-
-  if (contentType === 'application/json') {
-    // Chat widget JSON payload
-    try {
-      data = JSON.parse(e.postData.contents);
-    } catch (err) {
-      return ContentService
-        .createTextOutput(JSON.stringify({ response: 'Invalid JSON format' }))
-        .setMimeType(ContentService.MimeType.JSON);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScriptAndScale AI - Premium AI Automation Agents</title>
+  <meta name="description" content="Lifetime ownership AI agents for social media automation. One-time payment, full resale rights."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #667eea; min-height: 100vh; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+    header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid #667eea; }
+    nav { display: flex; justify-content: center; gap: 2.5rem; padding: 1rem 0; }
+    nav a { color: #667eea; text-decoration: none; font-weight: 600; transition: 0.3s; }
+    nav a:hover { color: #764ba2; }
+    .hero { text-align: center; padding: 140px 0 100px; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+    .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; }
+    .hero p { font-size: 1.5rem; max-width: 800px; margin: 0 auto 3rem; }
+    section { padding: 80px 0; }
+    h2 { text-align: center; font-size: 3rem; margin-bottom: 3rem; color: #764ba2; }
+    .agents-grid, .bundles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .card { background: rgba(102,126,234,0.05); border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s; border: 1px solid rgba(102,126,234,0.2); }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(102,126,234,0.2); }
+    .card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #764ba2; }
+    .card p { font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.9; }
+    .price { font-size: 2rem; font-weight: 700; margin: 1.5rem 0; color: #764ba2; }
+    .coming-soon { font-size: 1.3rem; color: #aaa; font-style: italic; margin: 1rem 0; }
+    .buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .btn-more { background: transparent; color: #667eea; border: 2px solid #667eea; padding: 0.8rem 2rem; border-radius: 12px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; }
+    .btn-more:hover { background: #667eea; color: #fff; }
+    .btn-buy { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; padding: 0.8rem 2rem; border: none; border-radius: 12px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; }
+    .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(102,126,234,0.3); }
+    .social-logos { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; }
+    .social-logos img { width: 30px; height: 30px; }
+    footer { padding: 3rem 0; text-align: center; color: #aaa; border-top: 1px solid rgba(102,126,234,0.1); }
+    footer a { color: #aaa; margin: 0 1rem; text-decoration: none; font-size: 0.9rem; }
+    footer a:hover { color: #667eea; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3rem; }
+      .buttons { flex-direction: column; }
+      .social-logos img { width: 24px; height: 24px; }
+      .social-logos { gap: 0.4rem; }
+      .card { padding: 2rem; }
     }
-  } else {
-    // PayPal IPN (application/x-www-form-urlencoded) or legacy
-    data = e.parameter || {};
-  }
-
-  return handleRequest(data, e);
-}
-
-function handleRequest(data, e) {
-  const action = data.action || '';
-
-  if (action === 'chat') {
-    return handleChat(data);
-  } 
-  else {
-    // Everything else → treat as PayPal IPN (or invalid)
-    if (e && e.postData && e.postData.contents) {
-      return handleIPN(e);
-    } else {
-      return ContentService
-        .createTextOutput(JSON.stringify({ error: 'Invalid or unsupported request' }))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-  }
-}
-
-function handleChat(data) {
-  const message = data.message || '';
-  const sessionId = data.sessionId || 'unknown';
-
-  if (!message.trim()) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ response: 'Please provide a message.' }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-
-  const openaiApiKey = PropertiesService.getScriptProperties().getProperty('OPENAI_API_KEY');
-  if (!openaiApiKey) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ response: 'Service configuration error. Please try again later.' }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-
-  const payload = {
-    model: "gpt-4o-mini",
-    messages: [
-      { 
-        role: "system", 
-        content: "You are ScriptAndScale AI Assistant. Be helpful, concise, professional, and promote our AI agents naturally when relevant." 
-      },
-      { role: "user", content: message }
-    ],
-    temperature: 0.7,
-    max_tokens: 300
-  };
-
-  const options = {
-    method: "post",
-    contentType: "application/json",
-    headers: {
-      "Authorization": "Bearer " + openaiApiKey
-    },
-    payload: JSON.stringify(payload),
-    muteHttpExceptions: true
-  };
-
-  try {
-    const response = UrlFetchApp.fetch("https://api.openai.com/v1/chat/completions", options);
-    const json = JSON.parse(response.getContentText());
-
-    if (json.choices && json.choices.length > 0) {
-      const botReply = json.choices[0].message.content.trim();
-      return ContentService
-        .createTextOutput(JSON.stringify({ response: botReply }))
-        .setMimeType(ContentService.MimeType.JSON);
-    } else {
-      return ContentService
-        .createTextOutput(JSON.stringify({ response: "Sorry, couldn't get a response. Try again." }))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-  } catch (err) {
-    Logger.log('OpenAI error: ' + err);
-    return ContentService
-      .createTextOutput(JSON.stringify({ response: "Sorry, something went wrong. Please try again in a moment." }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
-function handleIPN(e) {
-  // ────────────────────────────────────────────────────────────────
-  // Everything below this line is unchanged from previous version
-  // ────────────────────────────────────────────────────────────────
-
-  var rawData = e.postData.contents;
-  var params = e.parameter || {};
-
-  // Dynamic verification URL
-  var verifyUrl = 'https://ipnpb.paypal.com/cgi-bin/webscr';
-  if (params.test_ipn === '1') {
-    verifyUrl = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr';
-  }
-
-  // Payload integrity fix
-  var cmd = 'cmd=_notify-validate';
-  var payload = cmd + '&' + rawData;
-
-  var options = {
-    method: 'post',
-    payload: payload,
-    contentType: 'application/x-www-form-urlencoded',
-    muteHttpExceptions: true
-  };
-
-  var response = UrlFetchApp.fetch(verifyUrl, options);
-  var responseText = response.getContentText().trim();
-  var verified = (responseText === 'VERIFIED');
-
-  // Parse fields
-  var txn_id = params.txn_id || 'TEST-' + new Date().getTime();
-  var payer_email = params.payer_email || 'testbuyer@example.com';
-  var custom = params.custom || '';
-  var mc_gross = parseFloat(params.mc_gross || '0.00');
-
-  // Complexity check
-  var readyAgents = ['Social Content Generator', 'Chat Bot'];
-  var isComplex = (readyAgents.indexOf(custom) === -1);
-
-  // Open log spreadsheet from Script Properties (auto-create first time)
-  var logSpreadsheet = getLogSpreadsheet();
-  var logSheet = logSpreadsheet.getSheetByName(LOG_SHEET_NAME) || logSpreadsheet.insertSheet(LOG_SHEET_NAME);
-  logSheet.appendRow([new Date(), verified ? 'VERIFIED' : 'UNVERIFIED (' + responseText + ')', rawData, txn_id, custom, payer_email, mc_gross, isComplex ? 'complex' : 'simple']);
-
-  // Queue regardless
-  var queueSheet = logSpreadsheet.getSheetByName(QUEUE_SHEET_NAME) || logSpreadsheet.insertSheet(QUEUE_SHEET_NAME);
-  if (queueSheet.getLastRow() === 0) {
-    queueSheet.appendRow(['Queued Time', 'Txn ID', 'Agent', 'Payer Email', 'Amount', 'Status', 'Delivered Time', 'Verified']);
-  }
-  queueSheet.appendRow([new Date(), txn_id, custom, payer_email, mc_gross, 'queued', '', verified ? 'yes' : 'no']);
-
-  return ContentService.createTextOutput('Received and queued');
-}
-
-function getLogSpreadsheet() {
-  var properties = PropertiesService.getScriptProperties();
-  var ssId = properties.getProperty(PROPERTY_KEY);
-  if (ssId) {
-    return SpreadsheetApp.openById(ssId);
-  }
-  var ss = SpreadsheetApp.create(LOG_SPREADSHEET_NAME);
-  properties.setProperty(PROPERTY_KEY, ss.getId());
-  return ss;
-}
-
-function processDeliveryBatch() {
-  var logSpreadsheet = getLogSpreadsheet();
-  var queueSheet = logSpreadsheet.getSheetByName(QUEUE_SHEET_NAME);
-  if (!queueSheet || queueSheet.getLastRow() <= 1) return;
-
-  var data = queueSheet.getDataRange().getValues();
-  var rows = data.slice(1);
-
-  var now = new Date();
-  var day = now.getDay();
-  if (day === 0 || day === 6) return;
-
-  var processed = 0;
-
-  for (var i = 0; i < rows.length; i++) {
-    var row = rows[i];
-    if (row[5] !== 'queued') continue;
-
-    var queuedTime = new Date(row[0]);
-    var hoursSince = (now - queuedTime) / 3600000;
-    if (hoursSince < 24) continue;
-
-    var agent = row[2];
-    var payer_email = row[3];
-
-    var htmlBody = buildCustomizedEmailHtml(agent);
-    var zipBlob = buildCustomizedAgentZip(agent);
-
-    MailApp.sendEmail(payer_email, 'Your ScriptAndScale AI Agent: ' + agent, 'Full package attached.', {
-      htmlBody: htmlBody,
-      attachments: [zipBlob]
-    });
-
-    queueSheet.getRange(i + 2, 6).setValue('delivered');
-    queueSheet.getRange(i + 2, 7).setValue(now);
-
-    processed++;
-
-    MailApp.sendEmail('michaeltleatherwood@gmail.com', 'Agent Delivered (Verified: ' + row[7] + ')',
-      'Agent: ' + agent + '\nTo: ' + payer_email + '\nTxn: ' + row[1]);
-  }
-
-  if (processed > 0) {
-    MailApp.sendEmail('michaeltleatherwood@gmail.com', 'Batch Complete', processed + ' agents delivered.');
-  }
-}
-
-function buildCustomizedEmailHtml(agent) {
-  return '<h1>Your ' + agent + ' is ready!</h1><p>Instructions...</p>';
-}
-
-function buildCustomizedAgentZip(agent) {
-  var files = [];
-  files.push(Utilities.newBlob('// ' + agent + ' code', 'text/plain', 'main.gs'));
-  return Utilities.zip(files, agent + '.zip');
-}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#agents">Agents</a>
+      <a href="#bundles">Bundles</a>
+    </nav>
+  </header>
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>ScriptAndScale AI</h1>
+      <p>Premium AI automation agents for social media. Lifetime ownership. Full resale rights. One-time payment.</p>
+    </div>
+  </section>
+  <section class="container" id="agents">
+    <h2>Our AI Agents</h2>
+    <div class="agents-grid">
+      <div class="card">
+        <h3>Social Content Generator</h3>
+        <p>Daily fresh, on-brand posts automated across platforms.</p>
+        <p class="price">$9,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='social-content-generator.html'">Learn More</button>
+          <button class="btn-buy" onclick="location.href='purchase.html?agent=social-content'">Buy Now</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X">
+          <img src="facebook icon.png" alt="Facebook">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Reply Bot</h3>
+        <p>Intelligent automated replies and engagement.</p>
+        <p class="price">$4,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='reply-bot.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X">
+          <img src="facebook icon.png" alt="Facebook">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="linkedin-logo.png" alt="LinkedIn">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Promotion Bot</h3>
+        <p>Real traffic-driving promotion agent.</p>
+        <p class="price">$4,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='promotion-bot.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X">
+          <img src="facebook icon.png" alt="Facebook">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="linkedin-logo.png" alt="LinkedIn">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Custom Agent Builder</h3>
+        <p>Create fully custom automation agents.</p>
+        <p class="price">$4,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='custom-agent-builder.html'">Learn More</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Channel Optimization Agent</h3>
+        <p>Customer-configurable optimization agent.</p>
+        <p class="price">$4,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='channel-optimization-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="X icon.png" alt="X">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="instagram-logo.png" alt="Instagram">
+          <img src="facebook icon.png" alt="Facebook">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Video Content Automation Agent</h3>
+        <p>Automated video content creation.</p>
+        <p class="price">$14,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='video-content-automation-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="vimeo-logo.png" alt="Vimeo">
+          <img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Supercuts Agent</h3>
+        <p>Automated supercut video creation.</p>
+        <p class="price">$7,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='supercuts-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="youtube-logo.png" alt="YouTube">
+          <img src="tiktok-logo.png" alt="TikTok">
+          <img src="vimeo-logo.png" alt="Vimeo">
+          <img src="rumble-logo.png" alt="Rumble">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Chat Bot</h3>
+        <p>Live site and platform chat automation.</p>
+        <p class="price">$2,997</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='chat-bot.html'">Learn More</button>
+          <button class="btn-buy" onclick="location.href='purchase.html?agent=chat-bot'">Buy Now</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Written Content Agent</h3>
+        <p>Automated written content generation.</p>
+        <p class="price">$9,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+          <button class="btn-more" onclick="location.href='written-content-agent.html'">Learn More</button>
+        </div>
+        <div class="social-logos">
+          <img src="linkedin-logo.png" alt="LinkedIn">
+          <img src="reddit icon.png" alt="Reddit">
+          <img src="facebook icon.png" alt="Facebook">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container" id="bundles">
+    <h2>Our Bundles</h2>
+    <div class="bundles-grid">
+      <div class="card">
+        <h3>Content Creator Bundle</h3>
+        <p>Includes: Social Content Generator, Reply Bot, Promotion Bot, Chat Bot</p>
+        <p class="price">$19,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Video Creator Bundle</h3>
+        <p>Includes: Video Content Automation, Supercuts Agent, Promotion Bot, Chat Bot</p>
+        <p class="price">$24,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Engagement Boost Add-On</h3>
+        <p>Includes: Reply Bot, Chat Bot</p>
+        <p class="price">$6,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Flagship Everything Bundle</h3>
+        <p>All current + future agents. Lifetime.</p>
+        <p class="price">$44,997</p>
+        <p class="coming-soon">Coming Soon</p>
+        <div class="buttons">
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>© 2026 ScriptAndScale AI</p>
+    <p>
+      <a href="contact.html">Contact</a> •
+      <a href="privacy.html">Privacy Policy</a> •
+      <a href="terms.html">Terms of Service</a> •
+      <a href="disclaimer.html">Disclaimer</a>
+    </p>
+    <div class="social-logos" style="margin-top:1rem;">
+      <img src="X icon.png" alt="X"><img src="facebook icon.png" alt="Facebook"><img src="instagram-logo.png" alt="Instagram">
+      <img src="youtube-logo.png" alt="YouTube"><img src="tiktok-logo.png" alt="TikTok"><img src="linkedin-logo.png" alt="LinkedIn">
+      <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
+    </div>
+  </footer>
+  <script>
+  (function() {
+      const ENDPOINT = "https://script.google.com/macros/s/AKfycby2RnIfR3Xpm2qkT0ymX7mxD54I7-uucSubwnFZDag4n5wsjIpDmloS1jRXHZBdo3xrUg/exec";
+      const BRAND_COLOR = "#667eea";
+      const BRAND_COLOR_DARK = "#764ba2";
+      const container = document.createElement('div');
+      container.id = 'ssai-chat-container';
+      document.body.appendChild(container);
+      const style = document.createElement('style');
+      style.textContent = `
+          #ssai-chat-container {
+              position: fixed;
+              bottom: 24px;
+              right: 24px;
+              z-index: 9999;
+              font-family: 'Inter', system-ui, -apple-system, sans-serif;
+          }
+          #ssai-chat-launcher {
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              cursor: pointer;
+          }
+          #ssai-main-bubble {
+              width: 68px;
+              height: 68px;
+              background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
+              color: white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 700;
+              font-size: 19px;
+              box-shadow: 0 8px 32px rgba(102,126,234,0.45);
+              transition: all 0.3s ease;
+          }
+          #ssai-main-bubble:hover {
+              transform: scale(1.08);
+          }
+          .ssai-trail-bubble {
+              border-radius: 50%;
+              background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
+              box-shadow: 0 4px 16px rgba(102,126,234,0.35);
+          }
+          #trail3 { width: 17px; height: 17px; } /* 1/4 of third */
+          #trail2 { width: 34px; height: 34px; } /* 1/2 of third */
+          #trail1 { width: 48px; height: 48px; } /* third, smaller than main 68px */
+          #ssai-chat-window {
+              position: absolute;
+              bottom: calc(68px + 16px);
+              right: 0;
+              width: 360px;
+              height: 520px;
+              background: white;
+              border-radius: 16px;
+              box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+              overflow: hidden;
+              display: none;
+              flex-direction: column;
+              border: 1px solid rgba(102,126,234,0.15);
+          }
+          #ssai-chat-header {
+              background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
+              color: white;
+              padding: 14px 18px;
+              font-weight: 600;
+              font-size: 16px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+          }
+          #ssai-chat-close {
+              background: none;
+              border: none;
+              color: white;
+              font-size: 20px;
+              cursor: pointer;
+              opacity: 0.9;
+          }
+          #ssai-chat-close:hover { opacity: 1; }
+          #ssai-chat-messages {
+              flex: 1;
+              padding: 16px;
+              overflow-y: auto;
+              background: #f9fafb;
+          }
+          .ssai-message {
+              margin-bottom: 14px;
+              max-width: 82%;
+              padding: 12px 16px;
+              border-radius: 18px;
+              line-height: 1.4;
+              font-size: 15px;
+          }
+          .ssai-user {
+              background: ${BRAND_COLOR};
+              color: white;
+              margin-left: auto;
+              border-bottom-right-radius: 4px;
+          }
+          .ssai-bot {
+              background: white;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+              border-bottom-left-radius: 4px;
+          }
+          #ssai-chat-input-area {
+              padding: 12px 16px;
+              background: white;
+              border-top: 1px solid #e5e7eb;
+              display: flex;
+              gap: 10px;
+          }
+          #ssai-chat-input {
+              flex: 1;
+              padding: 10px 16px;
+              border: 1px solid #d1d5db;
+              border-radius: 12px;
+              font-size: 15px;
+              outline: none;
+          }
+          #ssai-chat-input:focus {
+              border-color: ${BRAND_COLOR};
+              box-shadow: 0 0 0 3px rgba(102,126,234,0.15);
+          }
+          #ssai-chat-send {
+              background: ${BRAND_COLOR};
+              color: white;
+              border: none;
+              border-radius: 12px;
+              width: 48px;
+              height: 48px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              transition: background 0.2s;
+          }
+          #ssai-chat-send:hover {
+              background: ${BRAND_COLOR_DARK};
+          }
+          #ssai-chat-send:disabled {
+              background: #9ca3af;
+              cursor: not-allowed;
+          }
+          .ssai-typing {
+              display: flex;
+              gap: 6px;
+              padding: 12px 16px;
+          }
+          .ssai-dot {
+              width: 8px;
+              height: 8px;
+              background: #9ca3af;
+              border-radius: 50%;
+              animation: ssai-bounce 1.4s infinite ease-in-out both;
+          }
+          .ssai-dot:nth-child(1) { animation-delay: -0.32s; }
+          .ssai-dot:nth-child(2) { animation-delay: -0.16s; }
+          @keyframes ssai-bounce {
+              0%, 80%, 100% { transform: scale(0); }
+              40% { transform: scale(1); }
+          }
+          @media (max-width: 480px) {
+              #ssai-chat-window {
+                  width: 90vw;
+                  height: 70vh;
+                  bottom: 80px;
+                  right: 5vw;
+              }
+              #ssai-main-bubble { width: 60px; height: 60px; font-size: 17px; }
+              #trail1 { width: 42px; height: 42px; } /* scaled down for mobile */
+              #trail2 { width: 30px; height: 30px; }
+              #trail3 { width: 15px; height: 15px; }
+          }
+      `;
+      document.head.appendChild(style);
+      container.innerHTML = `
+          <div id="ssai-chat-launcher">
+              <div class="ssai-trail-bubble" id="trail3"></div>
+              <div class="ssai-trail-bubble" id="trail2"></div>
+              <div class="ssai-trail-bubble" id="trail1"></div>
+              <div id="ssai-main-bubble">Chat</div>
+          </div>
+          <div id="ssai-chat-window">
+              <div id="ssai-chat-header">
+                  <span>ScriptAndScale AI Assistant</span>
+                  <button id="ssai-chat-close">×</button>
+              </div>
+              <div id="ssai-chat-messages"></div>
+              <div id="ssai-chat-input-area">
+                  <input type="text" id="ssai-chat-input" placeholder="Ask anything about our AI agents..." autocomplete="off"/>
+                  <button id="ssai-chat-send">➤</button>
+              </div>
+          </div>
+      `;
+      const launcher = document.getElementById('ssai-chat-launcher');
+      const windowEl = document.getElementById('ssai-chat-window');
+      const closeBtn = document.getElementById('ssai-chat-close');
+      const messages = document.getElementById('ssai-chat-messages');
+      const input = document.getElementById('ssai-chat-input');
+      const sendBtn = document.getElementById('ssai-chat-send');
+      let sessionId = localStorage.getItem('ssai_chat_session_id');
+      if (!sessionId) {
+          sessionId = 'ssai_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+          localStorage.setItem('ssai_chat_session_id', sessionId);
+      }
+      function addMessage(text, isUser = false) {
+          const msg = document.createElement('div');
+          msg.className = `ssai-message ${isUser ? 'ssai-user' : 'ssai-bot'}`;
+          msg.textContent = text;
+          messages.appendChild(msg);
+          messages.scrollTop = messages.scrollHeight;
+      }
+      function showTyping() {
+          const typing = document.createElement('div');
+          typing.className = 'ssai-typing';
+          typing.innerHTML = `
+              <div class="ssai-dot"></div>
+              <div class="ssai-dot"></div>
+              <div class="ssai-dot"></div>
+          `;
+          typing.id = 'ssai-typing-indicator';
+          messages.appendChild(typing);
+          messages.scrollTop = messages.scrollHeight;
+          return typing;
+      }
+      function removeTyping() {
+          const typing = document.getElementById('ssai-typing-indicator');
+          if (typing) typing.remove();
+      }
+      async function sendMessage() {
+          const text = input.value.trim();
+          if (!text) return;
+          addMessage(text, true);
+          input.value = '';
+          sendBtn.disabled = true;
+          input.disabled = true;
+          const typing = showTyping();
+          try {
+              const response = await fetch(ENDPOINT, {
+                  method: 'POST',
+                  mode: 'cors',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                      action: 'chat',
+                      message: text,
+                      sessionId: sessionId
+                  })
+              });
+              if (!response.ok) throw new Error(`Server responded ${response.status}`);
+              const data = await response.json();
+              removeTyping();
+              if (data && data.response) {
+                  addMessage(data.response);
+              } else {
+                  addMessage("Sorry, I couldn't get a proper response. Please try again.");
+              }
+          } catch (err) {
+              removeTyping();
+              addMessage("Sorry, something went wrong. Please try again in a moment.");
+              console.error('Chat error:', err);
+          } finally {
+              sendBtn.disabled = false;
+              input.disabled = false;
+              input.focus();
+          }
+      }
+      launcher.addEventListener('click', () => {
+          windowEl.style.display = windowEl.style.display === 'flex' ? 'none' : 'flex';
+          if (windowEl.style.display === 'flex') {
+              input.focus();
+          }
+      });
+      closeBtn.addEventListener('click', () => {
+          windowEl.style.display = 'none';
+      });
+      sendBtn.addEventListener('click', sendMessage);
+      input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              sendMessage();
+          }
+      });
+  })();
+  </script>
+</body>
+</html>
