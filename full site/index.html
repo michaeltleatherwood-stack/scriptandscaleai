@@ -199,32 +199,28 @@
         <p>Includes: Social Content Generator, Reply Bot, Promotion Bot, Chat Bot</p>
         <p class="price">$19,997</p>
         <p class="coming-soon">Coming Soon</p>
-        <div class="buttons">
-        </div>
+        <div class="buttons"></div>
       </div>
       <div class="card">
         <h3>Video Creator Bundle</h3>
         <p>Includes: Video Content Automation, Supercuts Agent, Promotion Bot, Chat Bot</p>
         <p class="price">$24,997</p>
         <p class="coming-soon">Coming Soon</p>
-        <div class="buttons">
-        </div>
+        <div class="buttons"></div>
       </div>
       <div class="card">
         <h3>Engagement Boost Add-On</h3>
         <p>Includes: Reply Bot, Chat Bot</p>
         <p class="price">$6,997</p>
         <p class="coming-soon">Coming Soon</p>
-        <div class="buttons">
-        </div>
+        <div class="buttons"></div>
       </div>
       <div class="card">
         <h3>Flagship Everything Bundle</h3>
         <p>All current + future agents. Lifetime.</p>
         <p class="price">$44,997</p>
         <p class="coming-soon">Coming Soon</p>
-        <div class="buttons">
-        </div>
+        <div class="buttons"></div>
       </div>
     </div>
   </section>
@@ -242,14 +238,17 @@
       <img src="reddit icon.png" alt="Reddit"><img src="vimeo-logo.png" alt="Vimeo"><img src="rumble-logo.png" alt="Rumble">
     </div>
   </footer>
+
   <script>
   (function() {
-      const ENDPOINT = "https://script.google.com/macros/s/AKfycby2RnIfR3Xpm2qkT0ymX7mxD54I7-uucSubwnFZDag4n5wsjIpDmloS1jRXHZBdo3xrUg/exec";
+      const ENDPOINT = "https://script.google.com/macros/s/AKfycbzAjwrEDv6D3ljHmlHXZ2YyLCo-fMh9HvWx6EVaMfDe9VgqZzxbj_n9kbr_cLjI2u1UNw/exec";
       const BRAND_COLOR = "#667eea";
       const BRAND_COLOR_DARK = "#764ba2";
+
       const container = document.createElement('div');
       container.id = 'ssai-chat-container';
       document.body.appendChild(container);
+
       const style = document.createElement('style');
       style.textContent = `
           #ssai-chat-container {
@@ -287,9 +286,9 @@
               background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
               box-shadow: 0 4px 16px rgba(102,126,234,0.35);
           }
-          #trail3 { width: 17px; height: 17px; } /* 1/4 of third */
-          #trail2 { width: 34px; height: 34px; } /* 1/2 of third */
-          #trail1 { width: 48px; height: 48px; } /* third, smaller than main 68px */
+          #trail3 { width: 17px; height: 17px; }
+          #trail2 { width: 34px; height: 34px; }
+          #trail1 { width: 48px; height: 48px; }
           #ssai-chat-window {
               position: absolute;
               bottom: calc(68px + 16px);
@@ -413,12 +412,13 @@
                   right: 5vw;
               }
               #ssai-main-bubble { width: 60px; height: 60px; font-size: 17px; }
-              #trail1 { width: 42px; height: 42px; } /* scaled down for mobile */
+              #trail1 { width: 42px; height: 42px; }
               #trail2 { width: 30px; height: 30px; }
               #trail3 { width: 15px; height: 15px; }
           }
       `;
       document.head.appendChild(style);
+
       container.innerHTML = `
           <div id="ssai-chat-launcher">
               <div class="ssai-trail-bubble" id="trail3"></div>
@@ -438,17 +438,20 @@
               </div>
           </div>
       `;
+
       const launcher = document.getElementById('ssai-chat-launcher');
       const windowEl = document.getElementById('ssai-chat-window');
       const closeBtn = document.getElementById('ssai-chat-close');
       const messages = document.getElementById('ssai-chat-messages');
       const input = document.getElementById('ssai-chat-input');
       const sendBtn = document.getElementById('ssai-chat-send');
+
       let sessionId = localStorage.getItem('ssai_chat_session_id');
       if (!sessionId) {
           sessionId = 'ssai_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
           localStorage.setItem('ssai_chat_session_id', sessionId);
       }
+
       function addMessage(text, isUser = false) {
           const msg = document.createElement('div');
           msg.className = `ssai-message ${isUser ? 'ssai-user' : 'ssai-bot'}`;
@@ -456,6 +459,7 @@
           messages.appendChild(msg);
           messages.scrollTop = messages.scrollHeight;
       }
+
       function showTyping() {
           const typing = document.createElement('div');
           typing.className = 'ssai-typing';
@@ -469,18 +473,23 @@
           messages.scrollTop = messages.scrollHeight;
           return typing;
       }
+
       function removeTyping() {
           const typing = document.getElementById('ssai-typing-indicator');
           if (typing) typing.remove();
       }
+
       async function sendMessage() {
           const text = input.value.trim();
           if (!text) return;
+
           addMessage(text, true);
           input.value = '';
           sendBtn.disabled = true;
           input.disabled = true;
+
           const typing = showTyping();
+
           try {
               const response = await fetch(ENDPOINT, {
                   method: 'POST',
@@ -489,14 +498,17 @@
                       'Content-Type': 'application/json'
                   },
                   body: JSON.stringify({
-                      action: 'chat',
                       message: text,
                       sessionId: sessionId
                   })
               });
+
               if (!response.ok) throw new Error(`Server responded ${response.status}`);
+
               const data = await response.json();
+
               removeTyping();
+
               if (data && data.response) {
                   addMessage(data.response);
               } else {
@@ -512,16 +524,20 @@
               input.focus();
           }
       }
+
       launcher.addEventListener('click', () => {
           windowEl.style.display = windowEl.style.display === 'flex' ? 'none' : 'flex';
           if (windowEl.style.display === 'flex') {
               input.focus();
           }
       });
+
       closeBtn.addEventListener('click', () => {
           windowEl.style.display = 'none';
       });
+
       sendBtn.addEventListener('click', sendMessage);
+
       input.addEventListener('keypress', (e) => {
           if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();
