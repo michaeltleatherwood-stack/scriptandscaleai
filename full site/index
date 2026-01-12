@@ -19,105 +19,288 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Inter', sans-serif; 
-      background: #0f0f11; 
-      color: #e2e8f0; 
+      background: #ffffff; 
+      color: #0f172a; 
       min-height: 100vh; 
+      line-height: 1.6;
     }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
-    header { 
-      position: fixed; top: 0; width: 100%; 
-      background: #0a0a0b; 
-      backdrop-filter: blur(10px); 
-      z-index: 100; 
-      border-bottom: 1px solid rgba(102,126,234,0.25); 
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Header with exact X banner background */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 220px;
+      background-image: url('https://michaeltleatherwood-stack.github.io/scriptandscaleai/site/x-banner.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
-    nav { display: flex; justify-content: center; gap: 2.5rem; padding: 1.25rem 0; }
-    nav a { 
-      color: #cbd5e1; 
-      text-decoration: none; 
-      font-weight: 600; 
-      transition: 0.3s; 
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      position: relative;
     }
-    nav a:hover { color: #a5b4fc; }
-    .hero { 
-      text-align: center; 
-      padding: 140px 0 100px; 
-      background: linear-gradient(135deg, #1e1b4b, #312e81, #4c1d95); 
-      color: #fff; 
+
+    .logo-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid rgba(255,255,255,0.9);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+      flex-shrink: 0;
     }
-    .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; }
-    .hero p { font-size: 1.5rem; max-width: 800px; margin: 0 auto 3rem; opacity: 0.95; }
-    section { padding: 80px 0; }
-    h2 { 
-      text-align: center; 
-      font-size: 3rem; 
-      margin-bottom: 3rem; 
-      color: #c7d2fe; 
-      background: linear-gradient(to right, #667eea, #764ba2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+
+    .logo-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .agents-grid, .bundles-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-      gap: 2rem; 
+
+    nav {
+      display: flex;
+      gap: 3rem;
     }
-    .card { 
-      background: #111113; 
-      border-radius: 16px; 
-      padding: 2.5rem; 
-      text-align: center; 
-      transition: all 0.3s; 
-      border: 1px solid rgba(102,126,234,0.18); 
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      transition: all 0.2s ease;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(4px);
     }
-    .card:hover { 
-      transform: translateY(-8px); 
-      box-shadow: 0 20px 40px rgba(102,126,234,0.12); 
-      border-color: rgba(102,126,234,0.35); 
+
+    nav a:hover {
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-2px);
     }
-    .card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #c7d2fe; }
-    .card p { font-size: 1.1rem; margin-bottom: 1.5rem; opacity: 0.85; }
-    .price { font-size: 2rem; font-weight: 700; margin: 1.5rem 0; color: #a5b4fc; }
-    .coming-soon { font-size: 1.3rem; color: #6b7280; font-style: italic; margin: 1rem 0; }
-    .buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0; }
-    .btn-more { 
-      background: transparent; 
-      color: #a5b4fc; 
-      border: 2px solid #667eea; 
-      padding: 0.8rem 2rem; 
-      border-radius: 12px; 
-      font-size: 1.1rem; 
-      cursor: pointer; 
-      transition: all 0.3s; 
+
+    /* Hero - continues the banner exactly */
+    .hero {
+      text-align: center;
+      padding: 280px 1rem 160px; /* Clears fixed header height */
+      background-image: url('https://michaeltleatherwood-stack.github.io/scriptandscaleai/site/x-banner.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      position: relative;
+      min-height: 60vh;
     }
-    .btn-more:hover { background: #667eea; color: #fff; }
-    .btn-buy { 
-      background: linear-gradient(135deg, #667eea, #764ba2); 
-      color: #fff; 
-      padding: 0.8rem 2rem; 
-      border: none; 
-      border-radius: 12px; 
-      font-size: 1.1rem; 
-      cursor: pointer; 
-      transition: all 0.3s; 
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45); /* Subtle dark overlay for readability */
+      z-index: 0;
     }
-    .btn-buy:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(102,126,234,0.25); }
-    .social-logos { margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
-    .social-logos img { width: 32px; height: 32px; opacity: 0.8; transition: 0.3s; filter: brightness(1.2); }
-    .social-logos img:hover { opacity: 1; filter: brightness(1.4); }
-    footer { 
-      padding: 3rem 0; 
-      text-align: center; 
-      color: #9ca3af; 
-      background: #0a0a0b; 
-      border-top: 1px solid rgba(102,126,234,0.18); 
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    footer a { color: #9ca3af; margin: 0 1rem; text-decoration: none; font-size: 0.95rem; }
-    footer a:hover { color: #a5b4fc; }
+
+    .hero h1 {
+      font-size: 4.8rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.7);
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.75rem;
+      font-weight: 400;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    /* Main content - light mode */
+    section {
+      padding: 100px 0;
+      background: white;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 3.5rem;
+      color: #1e40af;
+    }
+
+    .agents-grid, .bundles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.25s ease;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(30,58,138,0.12);
+      border-color: #bfdbfe;
+    }
+
+    .card h3 {
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+      color: #1e40af;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #475569;
+    }
+
+    .price {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin: 1.5rem 0;
+      color: #1d4ed8;
+    }
+
+    .coming-soon {
+      font-size: 1.3rem;
+      color: #64748b;
+      font-style: italic;
+      margin: 1rem 0;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin: 1.8rem 0;
+    }
+
+    .btn-more {
+      background: transparent;
+      color: #1d4ed8;
+      border: 2px solid #1d4ed8;
+      padding: 0.85rem 2.2rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-more:hover {
+      background: #1d4ed8;
+      color: white;
+    }
+
+    .btn-buy {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      padding: 0.85rem 2.2rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-buy:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(29,78,216,0.25);
+    }
+
+    .social-logos {
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-logos img {
+      width: 36px;
+      height: 36px;
+      opacity: 0.8;
+      transition: all 0.25s ease;
+    }
+
+    .social-logos img:hover {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+
+    footer {
+      padding: 5rem 0 3rem;
+      text-align: center;
+      color: #64748b;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    footer a {
+      color: #475569;
+      margin: 0 1.2rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: #1d4ed8;
+    }
+
+    @media (max-width: 1024px) {
+      header { height: 180px; }
+      .hero { padding-top: 240px; }
+      .header-inner { padding: 0 1.5rem; }
+      nav { gap: 2rem; }
+    }
+
     @media (max-width: 768px) {
-      .hero h1 { font-size: 3rem; }
-      .buttons { flex-direction: column; }
-      .social-logos img { width: 28px; height: 28px; }
+      .header-inner {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.8rem;
+        text-align: center;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+      }
+      nav a {
+        padding: 0.5rem 0.9rem;
+        font-size: 1rem;
+      }
+      .logo-avatar { width: 110px; height: 110px; }
+      .hero h1 { font-size: 3.4rem; }
+      .hero p { font-size: 1.45rem; }
     }
   </style>
 </head>
@@ -128,15 +311,20 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <header>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#agents">Agents</a>
-      <a href="#bundles">Bundles</a>
-    </nav>
+    <div class="header-inner">
+      <div class="logo-avatar">
+        <img src="https://michaeltleatherwood-stack.github.io/scriptandscaleai/site/logo.png" alt="ScriptAndScale AI">
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#agents">Agents</a>
+        <a href="#bundles">Bundles</a>
+      </nav>
+    </div>
   </header>
 
   <section class="hero" id="home">
-    <div class="container">
+    <div class="hero-content">
       <h1>ScriptAndScale AI</h1>
       <p>Premium AI automation agents for social media. Lifetime ownership. Full resale rights. One-time payment.</p>
     </div>
@@ -324,7 +512,7 @@
       <a href="terms.html">Terms of Service</a> •
       <a href="disclaimer.html">Disclaimer</a>
     </p>
-    <div class="social-logos" style="margin-top:1.5rem;">
+    <div class="social-logos" style="margin-top:2rem;">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/x.svg" alt="X">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/facebook.svg" alt="Facebook">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/instagram.svg" alt="Instagram">
@@ -340,8 +528,8 @@
   <script>
   (function() {
       const ENDPOINT = "https://script.google.com/macros/s/AKfycbwN0CE-P7hvMCUIQ9epE7tepTGnVWwPNtsU3L72edPs3oTmlxkyNJ5vk6Uff8uOiBPa/exec";
-      const BRAND_COLOR = "#667eea";
-      const BRAND_COLOR_DARK = "#764ba2";
+      const BRAND_COLOR = "#1d4ed8";
+      const BRAND_COLOR_DARK = "#1e40af";
       const container = document.createElement('div');
       container.id = 'ssai-chat-container';
       document.body.appendChild(container);
@@ -359,7 +547,7 @@
               height: 64px;
               background: ${BRAND_COLOR};
               border-radius: 50%;
-              box-shadow: 0 6px 20px rgba(102,126,234,0.35);
+              box-shadow: 0 6px 20px rgba(29,78,216,0.35);
               display: flex;
               align-items: center;
               justify-content: center;
@@ -380,14 +568,13 @@
               right: 0;
               width: 360px;
               height: 520px;
-              background: #111113;
+              background: white;
               border-radius: 16px;
-              box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+              box-shadow: 0 20px 60px rgba(0,0,0,0.18);
               overflow: hidden;
               display: none;
               flex-direction: column;
-              border: 1px solid rgba(102,126,234,0.25);
-              color: #e2e8f0;
+              border: 1px solid #e2e8f0;
           }
           #ssai-chat-header {
               background: linear-gradient(135deg, ${BRAND_COLOR}, ${BRAND_COLOR_DARK});
@@ -410,7 +597,7 @@
               flex: 1;
               padding: 16px;
               overflow-y: auto;
-              background: #0f0f11;
+              background: #f8fafc;
           }
           .ssai-message {
               margin-bottom: 14px;
@@ -427,30 +614,29 @@
               border-bottom-right-radius: 4px;
           }
           .ssai-bot {
-              background: #1f1f23;
-              border: 1px solid rgba(102,126,234,0.2);
+              background: white;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+              border: 1px solid #e2e8f0;
               border-bottom-left-radius: 4px;
           }
           #ssai-chat-input-area {
               padding: 12px 16px;
-              background: #111113;
-              border-top: 1px solid rgba(102,126,234,0.2);
+              background: white;
+              border-top: 1px solid #e2e8f0;
               display: flex;
               gap: 10px;
           }
           #ssai-chat-input {
               flex: 1;
               padding: 10px 16px;
-              border: 1px solid #4b5563;
+              border: 1px solid #cbd5e1;
               border-radius: 12px;
               font-size: 15px;
-              background: #1f1f23;
-              color: #e2e8f0;
               outline: none;
           }
           #ssai-chat-input:focus {
               border-color: ${BRAND_COLOR};
-              box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+              box-shadow: 0 0 0 3px rgba(29,78,216,0.15);
           }
           #ssai-chat-send {
               background: ${BRAND_COLOR};
