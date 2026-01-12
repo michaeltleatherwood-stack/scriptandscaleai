@@ -26,7 +26,7 @@
     }
     .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* Header with exact X banner background */
+    /* Header with exact X banner background - no overlay */
     header {
       position: fixed;
       top: 0;
@@ -47,7 +47,6 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 2.5rem;
-      position: relative;
     }
 
     .logo-avatar {
@@ -76,20 +75,16 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 1.15rem;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.9);
       transition: all 0.2s ease;
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      background: rgba(0,0,0,0.25);
-      backdrop-filter: blur(4px);
     }
 
     nav a:hover {
-      background: rgba(255,255,255,0.18);
+      color: #e0f2fe;
       transform: translateY(-2px);
     }
 
-    /* Hero - continues the banner exactly */
+    /* Hero - continues the banner exactly - subtle dark overlay removed */
     .hero {
       text-align: center;
       padding: 280px 1rem 160px; /* Clears fixed header height */
@@ -102,17 +97,7 @@
       min-height: 60vh;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45); /* Subtle dark overlay for readability */
-      z-index: 0;
-    }
-
     .hero-content {
-      position: relative;
-      z-index: 1;
       max-width: 900px;
       margin: 0 auto;
     }
